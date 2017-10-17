@@ -20,19 +20,61 @@ namespace Index
                 {
                     if (artikel == "1")
                     {
-                        shoppingCartTable.Rows[0].Cells[0].Text += "Häftapparat";
+                        if (shoppingCartTable.Rows[0].Cells[0].Text == "")
+                        {
+                            shoppingCartTable.Rows[0].Cells[0].Text += "Häftapparat";
+                            shoppingCartTable.Rows[0].Cells[1].Text = "1";
+                        }
+                        else
+                        {
+                            int numberOf = int.Parse(shoppingCartTable.Rows[0].Cells[1].Text);
+                            ++numberOf;
+                            shoppingCartTable.Rows[0].Cells[1].Text = numberOf.ToString();
+
+                        }
                     }
                     else if (artikel == "2")
                     {
-                        shoppingCartTable.Rows[1].Cells[0].Text += "Penna";
+                        
+                        if (shoppingCartTable.Rows[1].Cells[0].Text == "")
+                        {
+                            shoppingCartTable.Rows[1].Cells[0].Text += "Penna";
+                            shoppingCartTable.Rows[1].Cells[1].Text = "1";
+                        }
+                        else
+                        {
+                            int numberOf = int.Parse(shoppingCartTable.Rows[1].Cells[1].Text);
+                            ++numberOf;
+                            shoppingCartTable.Rows[1].Cells[1].Text = numberOf.ToString();
+                        }
                     }
                     else if (artikel == "3")
                     {
-                        shoppingCartTable.Rows[2].Cells[0].Text += "Gem";
+                        if (shoppingCartTable.Rows[2].Cells[0].Text == "")
+                        {
+                            shoppingCartTable.Rows[2].Cells[0].Text += "Gem";
+                            shoppingCartTable.Rows[2].Cells[1].Text = "1";
+                        }
+                        else
+                        {
+                            int numberOf = int.Parse(shoppingCartTable.Rows[2].Cells[1].Text);
+                            ++numberOf;
+                            shoppingCartTable.Rows[2].Cells[1].Text = numberOf.ToString();
+                        }
                     }
                     else if (artikel == "4")
                     {
-                        shoppingCartTable.Rows[3].Cells[0].Text += "Papper";
+                        if (shoppingCartTable.Rows[3].Cells[0].Text == "")
+                        {
+                            shoppingCartTable.Rows[3].Cells[0].Text += "Papper";
+                            shoppingCartTable.Rows[3].Cells[1].Text = "1";
+                        }
+                        else
+                        {
+                            int numberOf = int.Parse(shoppingCartTable.Rows[3].Cells[1].Text);
+                            ++numberOf;
+                            shoppingCartTable.Rows[3].Cells[1].Text = numberOf.ToString();
+                        }
                     }
                 }
                 

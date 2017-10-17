@@ -40,6 +40,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Artiklar.cs" />
     <Compile Include="Kunder.cs" />
     <Compile Include="KlassBibliotek.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
