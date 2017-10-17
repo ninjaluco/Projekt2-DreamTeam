@@ -69,6 +69,7 @@
     <Content Include="Bilder\Pennor.jpg" />
     <Content Include="Gem.aspx" />
     <Content Include="Häftapparater.aspx" />
+    <Content Include="Js\MyJavaScript.js" />
     <Content Include="Main.Master" />
     <None Include="packages.config" />
     <Content Include="Papper.aspx" />

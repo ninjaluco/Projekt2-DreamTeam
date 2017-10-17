@@ -2,10 +2,12 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-	<p>Pennor</p>
+    <p>Pennor</p>
 
 	<img src="Bilder/Pennor.jpg" />
-	<p>5-pack Pris: 99,99:-</p>
+	<p id="FivePack">5-pack Pris: 99,99:-</p>
+    <asp:Button ID="buttonFivePackBuy" runat="server" OnClick="buttonFivePackBuy_Click" Text="Köp!!!" />
+
 
 
 
