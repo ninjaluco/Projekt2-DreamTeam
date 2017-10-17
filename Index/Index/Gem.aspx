@@ -3,4 +3,6 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 	<p<>Gem</p>
+	<img src="Bilder/thumb.jpg" />
+	<p>50-pack Pris 99,99:-</p> <input id="Add" type="button" value="Lägg till"  />
 </asp:Content>

@@ -4,6 +4,7 @@
 
 <html>
 <head runat="server">
+	
     <title></title>
 	<link href="Content/bootstrap.css" rel="stylesheet" />
 	<script src="Scripts/bootstrap.min.js"></script>
@@ -28,11 +29,13 @@
 			<!-- Collect the nav links, forms, and other content for toggling -->
 			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav">
-					<li class="active"><a href="Pennor.aspx">Pennor</a></li>
+					<li><a href="Pennor.aspx">Pennor</a></li>
 					<li><a href="Papper.aspx">Papper</a></li>
 					<li><a href="Häftapparater.aspx">Häftapparater</a></li>
 					<li><a href="Gem.aspx">Gem</a></li>
 					<li><a href="Varukorg.aspx">Varukorg</a></li>
+					
+
 
 					
 				</ul>

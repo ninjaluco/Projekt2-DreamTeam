@@ -5,7 +5,7 @@
 	<p>Pennor</p>
 
 	<img src="Bilder/Pennor.jpg" />
-	<p>5-pack Pris: 99,99:-</p>
+	<p>5-pack Pris: 99,99:-</p> <input id="Add" type="button" value="Lägg till"  />
 
 
 
