@@ -38,7 +38,9 @@ namespace SqlLibrary
             sqlCommand.CommandText = "RegisterUser";
             sqlCommand.CommandType = CommandType.StoredProcedure; //Sparat i Managment studio
             sqlCommand.Connection = sqlConnection;
-            
+
+
+
             sqlCommand.Parameters.Add(CreateVarcharParameter("@name", name));
             sqlCommand.Parameters.Add(CreateVarcharParameter("@nick", nickName));
             sqlCommand.Parameters.Add(CreateVarcharParameter("@pass", passWord));
@@ -47,7 +49,24 @@ namespace SqlLibrary
             sqlCommand.Parameters.Add(CreateVarcharParameter("@street", Street));
             sqlCommand.Parameters.Add(CreateVarcharParameter("@city", City));
             sqlCommand.Parameters.Add(CreateVarcharParameter("@zip", Zip));
-            sqlCommand.Parameters.Add(CreateVarcharParameter("@ssn", SSN));            
+            sqlCommand.Parameters.Add(CreateVarcharParameter("@ssn", SSN));
+
+            //bool nameChecker;
+            //SqlCommand checkNameValidation = new SqlCommand("SELECT * FROM Kunder WHERE ([NickName] = @nick)", sqlConnection);
+            //checkNameValidation.Parameters.AddWithValue("@nick",nickName);
+            //SqlDataReader reader = checkNameValidation.ExecuteReader();
+
+            //if (reader.HasRows)
+            //{
+            //    nameChecker = false;
+            //}
+            //else
+            //{
+            //    nameChecker = true;
+            //}
+
+
+
             int rowEffected;
 
             try
