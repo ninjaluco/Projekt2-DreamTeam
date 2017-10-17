@@ -28,6 +28,7 @@ namespace Index
                 Response.Cookies["shoppingCart"].Value = "penna";
                 Response.Cookies["shoppingCart"].Expires = DateTime.Now.AddDays(1);
             }
+			
         }
 
         
