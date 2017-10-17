@@ -14,9 +14,9 @@ namespace Index
 
 		}
 
-        protected void addButton_Click(object sender, EventArgs e)
-        {
-            this.Master.buttonBuyThings_Click(sender, e);
-        }
+        //protected void addButton_Click(object sender, EventArgs e)
+        //{
+        //    this.Master.buttonBuyThings_Click(sender, e);
+        //}
     }
 }
