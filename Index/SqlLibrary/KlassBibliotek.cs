@@ -195,21 +195,21 @@ namespace SqlLibrary
 
         //=========================================================================================
         //=========================================================================================
-        //====================      REGISTRERING AV VAROR      ====================================
+        //====================      REGISTRERING AV Artiklar      =================================
         //=========================================================================================
         //=========================================================================================  
         #region
 
         //=========================================================================================
         //==========ARTIKEL REGISTRERING===========================================================
-        public bool ArtikelRegistrering(int AID, string artikelnamn, int pris, string kategori)
+        public bool ArtikelRegistrering(/*int AID,*/ string artikelnamn, int pris, string kategori)
         {
             SqlCommand sqlCommand = new SqlCommand(); //Skapa alltid i varje ny metod
             sqlCommand.CommandText = "RegisterArtikel";
             sqlCommand.CommandType = CommandType.StoredProcedure; //Sparat i Managment studio
             sqlCommand.Connection = sqlConnection;
 
-            sqlCommand.Parameters.Add(CreateIntParam("@AID", AID));
+            //sqlCommand.Parameters.Add(CreateIntParam("@AID", AID));
             sqlCommand.Parameters.Add(CreateVarcharParameter("@artikelNamn", artikelnamn));
             sqlCommand.Parameters.Add(CreateIntParam("@pris", pris));
             sqlCommand.Parameters.Add(CreateVarcharParameter("@kategori", kategori));
@@ -244,7 +244,7 @@ namespace SqlLibrary
         {
             List<Artiklar> artiklar = new List<Artiklar>();
             SqlCommand sqlCommandArt = new SqlCommand(); //Skapa alltid i varje ny metod
-            sqlCommandArt.CommandText = "select * from RegisterArtikel";
+            sqlCommandArt.CommandText = "select * from Artiklar";
             sqlCommandArt.CommandType = CommandType.Text; //Sparat i Managment studio
             sqlCommandArt.Connection = sqlConnection;
 
@@ -277,7 +277,7 @@ namespace SqlLibrary
         //=========================================================================================
         //==========ARTIKEL UPPDATERING============================================================
 
-        public bool UpdateArtikel(int AID, string artikelnamn, string pris, string kategori)
+        public bool UpdateArtikel(int AID, string artikelnamn, int pris, string kategori)
         {
             SqlCommand sqlCommand = new SqlCommand(); //Skapa alltid i varje ny metod
             sqlCommand.CommandText = "UpdateArtikel";
@@ -286,7 +286,7 @@ namespace SqlLibrary
 
            
             sqlCommand.Parameters.Add(CreateIntParam("@AID", AID));
-            sqlCommand.Parameters.Add(CreateVarcharParameter("@artikelnamn", artikelnamn));
+            sqlCommand.Parameters.Add(CreateVarcharParameter("@artikelNamn", artikelnamn));
             sqlCommand.Parameters.Add(CreateIntParam("@pris", pris));
             sqlCommand.Parameters.Add(CreateVarcharParameter("@kategori", kategori));
            
@@ -319,7 +319,7 @@ namespace SqlLibrary
             deleteArtikel.CommandText = "DeleteArtikel";
             deleteArtikel.CommandType = CommandType.StoredProcedure; //Sparat i Managment studio
             deleteArtikel.Connection = sqlConnection;
-            SqlParameter idParam = CreateIntParam("@ArtikelID", AID);
+            SqlParameter idParam = CreateIntParam("@AID", AID);
             deleteArtikel.Parameters.Add(idParam);
             int rowEffected;
 
