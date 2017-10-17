@@ -9,10 +9,18 @@ namespace SqlLibrary
     public class Kunder
     {
         
-        public int ID { get; set; }
-        public string Firstname { get; set; }
-        public string Lastname { get; set; }
+        public int kundID { get; set; }
+        public string nickName { get; set; }
+        public string passWord { get; set; }
+        public string name { get; set; }
+        public string telefon { get; set; }
         public string SSN { get; set; }
+        public string eMail { get; set; }
+        public string Street { get; set; }
+        public string City { get; set; }
+        public string Zip { get; set; }
+
+
     }
-   
+
 }
