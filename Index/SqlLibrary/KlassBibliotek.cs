@@ -38,7 +38,7 @@ namespace SqlLibrary
             sqlCommand.CommandText = "RegisterUser";
             sqlCommand.CommandType = CommandType.StoredProcedure; //Sparat i Managment studio
             sqlCommand.Connection = sqlConnection;
-
+            
             sqlCommand.Parameters.Add(CreateVarcharParameter("@name", name));
             sqlCommand.Parameters.Add(CreateVarcharParameter("@nick", nickName));
             sqlCommand.Parameters.Add(CreateVarcharParameter("@pass", passWord));
@@ -47,20 +47,17 @@ namespace SqlLibrary
             sqlCommand.Parameters.Add(CreateVarcharParameter("@street", Street));
             sqlCommand.Parameters.Add(CreateVarcharParameter("@city", City));
             sqlCommand.Parameters.Add(CreateVarcharParameter("@zip", Zip));
-            sqlCommand.Parameters.Add(CreateVarcharParameter("@ssn", SSN));
-            
+            sqlCommand.Parameters.Add(CreateVarcharParameter("@ssn", SSN));            
             int rowEffected;
 
             try
             {
                 sqlConnection.Open();
                 rowEffected = sqlCommand.ExecuteNonQuery();
-
             }
             catch
             {
                 rowEffected = -1;
-
             }
             finally
             {
