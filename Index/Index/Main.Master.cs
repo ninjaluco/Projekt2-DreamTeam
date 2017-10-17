@@ -11,6 +11,7 @@ namespace Index
 	{
 		protected void Page_Load(object sender, EventArgs e)
 		{
+			
 
 		}
         //Kallas på från alla sidor. Lägger till varan i cookie. TODO: lägg till funktionalitet för mer än en vara.
