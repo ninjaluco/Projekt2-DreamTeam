@@ -341,8 +341,125 @@ namespace SqlLibrary
             return rowEffected > 0; //true or false is returning
         }
         //=========================================================================================
-        #endregion 
+        #endregion
 
+        //=========================================================================================
+        //=========================================================================================
+        //====================      REGISTRERING AV ORDRAR      ==================================
+        //=========================================================================================
+        //========================================================================================= 
+        #region
+
+        //=========================================================================================
+        //==========ORDER AVLÄSNING================================================================
+
+        public bool OrderRegistrering(int OID, int KID, int VID)
+        {
+            SqlCommand sqlCommand = new SqlCommand(); //Skapa alltid i varje ny metod
+            sqlCommand.CommandText = "Order";
+            sqlCommand.CommandType = CommandType.StoredProcedure; //Sparat i Managment studio
+            sqlCommand.Connection = sqlConnection;
+
+            
+            sqlCommand.Parameters.Add(CreateIntParam("@OrderID", OID));
+            sqlCommand.Parameters.Add(CreateIntParam("@KundID", KID));
+            sqlCommand.Parameters.Add(CreateIntParam("@VarukorgID", VID));
+
+
+            int rowEffected;
+
+            try
+            {
+                sqlConnection.Open();
+                rowEffected = sqlCommand.ExecuteNonQuery();
+
+            }
+            catch
+            {
+                rowEffected = -1;
+
+            }
+            finally
+            {
+                sqlConnection.Close();
+            }
+            return rowEffected > 0; //true or false is returning
+
+
+        }
+
+        //=========================================================================================
+        //==========KUND AVLÄSNING=================================================================
+
+        public List<Order> ReadAllOrders()
+        {
+            List<Order> Ordrar = new List<Order>();
+            SqlCommand sqlCommandArt = new SqlCommand(); //Skapa alltid i varje ny metod
+            sqlCommandArt.CommandText = "select * from Artiklar";
+            sqlCommandArt.CommandType = CommandType.Text; //Sparat i Managment studio
+            sqlCommandArt.Connection = sqlConnection;
+
+            try
+            {
+                sqlConnection.Open();
+                SqlDataReader reader = sqlCommandArt.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    Order order = new Order();
+                    order.OID = (int)reader["OrderID"];
+                    order.KID = (int)reader["KundID"];
+                    order.VID = (int)reader["VarukorgID"];
+
+                    Ordrar.Add(order);
+                }
+
+            }
+            catch
+            {
+                Ordrar = null;
+            }
+            finally
+            {
+                sqlConnection.Close();
+            }
+            return Ordrar;
+        }
+
+        //=========================================================================================
+        //==========ARTIKEL RADERING===============================================================
+
+        public bool TaBortOrder(int OID)
+        {
+            SqlCommand Ordrar = new SqlCommand(); //Skapa alltid i varje ny metod
+            Ordrar.CommandText = "OrderDelete";
+            Ordrar.CommandType = CommandType.StoredProcedure; //Sparat i Managment studio
+            Ordrar.Connection = sqlConnection;
+            SqlParameter idParam = CreateIntParam("@OID", OID);
+            Ordrar.Parameters.Add(idParam);
+            int rowEffected;
+
+            try
+            {
+                sqlConnection.Open();
+                rowEffected = Ordrar.ExecuteNonQuery();
+
+            }
+            catch
+            {
+                rowEffected = -1;
+
+            }
+            finally
+            {
+                sqlConnection.Close();
+            }
+            return rowEffected > 0; //true or false is returning
+        }
+
+
+
+        #endregion
         //=========================================================================================
         //=========================================================================================
         //====================      HELPING METHODS      ==========================================
