@@ -201,7 +201,7 @@ namespace SqlLibrary
         //====================      REGISTRERING AV VAROR      ====================================
         //=========================================================================================
         //=========================================================================================  
-        //artikelnamn pris kategori ArtikelID
+        #region
 
         //=========================================================================================
         //==========ARTIKEL REGISTRERING===========================================================
@@ -315,6 +315,36 @@ namespace SqlLibrary
         }
         //=========================================================================================
         //==========ARTIKEL RADERING===============================================================
+
+        public bool TaBortArtiklar(int AID)
+        {
+            SqlCommand deleteArtikel = new SqlCommand(); //Skapa alltid i varje ny metod
+            deleteArtikel.CommandText = "DeleteArtikel";
+            deleteArtikel.CommandType = CommandType.StoredProcedure; //Sparat i Managment studio
+            deleteArtikel.Connection = sqlConnection;
+            SqlParameter idParam = CreateIntParam("@ArtikelID", AID);
+            deleteArtikel.Parameters.Add(idParam);
+            int rowEffected;
+
+            try
+            {
+                sqlConnection.Open();
+                rowEffected = deleteArtikel.ExecuteNonQuery();
+
+            }
+            catch
+            {
+                rowEffected = -1;
+
+            }
+            finally
+            {
+                sqlConnection.Close();
+            }
+            return rowEffected > 0; //true or false is returning
+        }
+        //=========================================================================================
+        #endregion 
 
         //=========================================================================================
         //=========================================================================================
