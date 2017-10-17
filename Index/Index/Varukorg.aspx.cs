@@ -11,6 +11,12 @@ namespace Index
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            
+            if (Request.Cookies["shoppingCart"] != null)
+            {
+                shoppingCartTable.Rows[0].Cells[0].Text = Request.Cookies["shoppingCart"].Value;
+                
+            }
 
         }
     }

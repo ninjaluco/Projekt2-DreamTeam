@@ -66,11 +66,16 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Bilder\5000272_301_220.jpg" />
+    <Content Include="Bilder\pappernfokus.jpg" />
     <Content Include="Bilder\Pennor.jpg" />
+    <Content Include="Bilder\thumb.jpg" />
     <Content Include="Gem.aspx" />
     <Content Include="Häftapparater.aspx" />
+    <Content Include="Js\MyJavaScript.js" />
     <Content Include="Main.Master" />
     <None Include="packages.config" />
+    <Content Include="myJavaStyle.css" />
     <Content Include="Papper.aspx" />
     <Content Include="Pennor.aspx" />
     <Content Include="Scripts\jquery-1.9.1.min.map" />
