@@ -6,7 +6,7 @@
 
 	<img src="Bilder/Pennor.jpg" />
 	<p id="FivePack">5-pack Pris: 99,99:-</p>
-    <asp:Button ID="buttonFivePackBuy" runat="server" OnClick="buttonFivePackBuy_Click" Text="Köp!!!" />
+    <asp:Button ID="buttonFivePackBuy" runat="server" CommandArgument="pennor" OnClick="buttonFivePackBuy_Click" Text="Köp!!!" />
 
 
 

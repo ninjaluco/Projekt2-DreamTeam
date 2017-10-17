@@ -1,0 +1,65 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Main.master.cs" Inherits="Index.Main" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+	
+    <title></title>
+	<link href="Content/bootstrap.css" rel="stylesheet" />
+    <script src="Scripts/jquery-1.9.1.min.js"></script>
+	<script src="Scripts/bootstrap.min.js"></script>
+	
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+			<nav class="navbar navbar-default" role="navigation">
+			<!-- Brand and toggle get grouped for better mobile display -->
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="Index_1.aspx">Fyra pojkar o lite vatten</a>
+			</div>
+
+			<!-- Collect the nav links, forms, and other content for toggling -->
+			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+				<ul class="nav navbar-nav">
+					<li><a href="Pennor.aspx">Pennor</a></li>
+					<li><a href="Papper.aspx">Papper</a></li>
+					<li><a href="Häftapparater.aspx">Häftapparater</a></li>
+					<li><a href="Gem.aspx">Gem</a></li>
+					<li><a href="Varukorg.aspx">Varukorg</a></li>
+				</ul>
+				<div class="col-sm-3 col-md-3">
+					<%--<form class="navbar-form" role="search">--%>
+						<div class="input-group">
+							<input type="text" class="form-control" placeholder="Search" name="q">
+							<div class="input-group-btn">
+								<button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+							</div>
+						</div>
+					<%--</form>--%>
+				</div>
+				<ul class="nav navbar-nav navbar-right">
+					<li><a href="#">Log in</a></li>
+
+					</li>
+   
+				</ul>
+			</div>
+			 <%--/.navbar-collapse --%>
+		</nav>
+		
+        <div>
+            <asp:ContentPlaceHolder ID="MainContent" runat="server">
+            </asp:ContentPlaceHolder>
+        </div>
+    </form>
+</body>
+</html>
