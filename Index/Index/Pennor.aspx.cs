@@ -16,16 +16,18 @@ namespace Index
 
         protected void buttonFivePackBuy_Click(object sender, EventArgs e)
         {
+            Button clickedButton = (Button)sender;
+            //implementera cookies olika beroende på vem som är inloggad
             if (Request.Cookies["shoppingCart"] != null)
             {
                 string newCookie = Request.Cookies["shoppingCart"].Value;
-                newCookie += "penna";
+                newCookie += clickedButton.CommandArgument;
                 Response.Cookies["shoppingCart"].Value = newCookie;
                 Response.Cookies["shoppingCart"].Expires = DateTime.Now.AddDays(1);
             }
             else
             {
-                Response.Cookies["shoppingCart"].Value = "penna";
+                Response.Cookies["shoppingCart"].Value = clickedButton.CommandArgument;
                 Response.Cookies["shoppingCart"].Expires = DateTime.Now.AddDays(1);
             }
 			
