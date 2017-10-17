@@ -5,7 +5,7 @@ VisualStudioVersion = 15.0.26730.10
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Index", "Index\Index.csproj", "{9973F5B3-88A7-4B6A-9977-2F617B5D4C49}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SqlBibliotek", "..\..\..\..\Desktop\Projekt 2\SqlLibrary\SqlBibliotek.csproj", "{72FFCC7A-B2B6-4D49-8C53-AD4C0408A63E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SqlBibliotek", "SqlLibrary\SqlBibliotek.csproj", "{72FFCC7A-B2B6-4D49-8C53-AD4C0408A63E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
