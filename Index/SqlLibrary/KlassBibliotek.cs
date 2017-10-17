@@ -122,7 +122,7 @@ namespace SqlLibrary
             string eMail, string Street, string City, string Zip, string SSN)
         {
             SqlCommand sqlCommand = new SqlCommand(); //Skapa alltid i varje ny metod
-            sqlCommand.CommandText = "UpdateContact";
+            sqlCommand.CommandText = "UpdateUser";
             sqlCommand.CommandType = CommandType.StoredProcedure; //Sparat i Managment studio
             sqlCommand.Connection = sqlConnection;
 
@@ -164,7 +164,7 @@ namespace SqlLibrary
         public bool TaBortKundRegister(int kundID)
         {
             SqlCommand deleteKund = new SqlCommand(); //Skapa alltid i varje ny metod
-            deleteKund.CommandText = "DeleteContact";
+            deleteKund.CommandText = "DeleteUser";
             deleteKund.CommandType = CommandType.StoredProcedure; //Sparat i Managment studio
             deleteKund.Connection = sqlConnection;
             SqlParameter idParam = CreateIntParam("@KID", kundID);
