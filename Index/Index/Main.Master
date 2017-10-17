@@ -24,7 +24,7 @@
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="#">Fyra pojkar o lite vatten</a>
+				<a class="navbar-brand" href="Index_1.aspx">Fyra pojkar o lite vatten</a>
 			</div>
 
 			<!-- Collect the nav links, forms, and other content for toggling -->
@@ -35,10 +35,6 @@
 					<li><a href="Häftapparater.aspx">Häftapparater</a></li>
 					<li><a href="Gem.aspx">Gem</a></li>
 					<li><a href="Varukorg.aspx">Varukorg</a></li>
-					
-
-
-					
 				</ul>
 				<div class="col-sm-3 col-md-3">
 					<%--<form class="navbar-form" role="search">--%>
