@@ -13,12 +13,24 @@ namespace Index {
     public partial class Pennor {
         
         /// <summary>
-        /// buttonFivePackBuy control.
+        /// addButton control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button buttonFivePackBuy;
+        protected global::System.Web.UI.WebControls.Button addButton;
+        
+        /// <summary>
+        /// Master property.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated property.
+        /// </remarks>
+        public new Index.Main Master {
+            get {
+                return ((Index.Main)(base.Master));
+            }
+        }
     }
 }

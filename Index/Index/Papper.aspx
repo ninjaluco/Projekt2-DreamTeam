@@ -1,9 +1,12 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Main.Master" AutoEventWireup="true" CodeBehind="Papper.aspx.cs" Inherits="Index.Papper" %>
+<%@ MasterType VirtualPath="~/Main.Master" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-	<p>Papper</p>
-	<img src="Bilder/pappernfokus.jpg" />
-	<p>5-pack Pris: 99,99:-</p> <input id="Add" type="button" value="Lägg till"  />
-
+    <p>Papper</p>
+	<img src="Bilder/pappernfokus.jpg" class="productImage" />
+	<p>5-pack Pris: 99,99:-<asp:Button ID="addButton" runat="server" OnClick="addButton_Click" Text="Lägg till" CommandArgument="4," />
+    </p> 
+    
 </asp:Content>

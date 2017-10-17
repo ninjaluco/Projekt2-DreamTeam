@@ -10,27 +10,27 @@
 
    <div>
 
-    <h3>Table example, constructed at design time</h3>
     <asp:Table id="shoppingCartTable" runat="server"
         CellPadding="10" 
         GridLines="Both"
         HorizontalAlign="Center">
         <asp:TableRow>
             <asp:TableCell>
-                Row 0, Col 0
-            </asp:TableCell>
-            <asp:TableCell>
-                Row 0, Col 1
             </asp:TableCell>
         </asp:TableRow>
         <asp:TableRow>
             <asp:TableCell>
-                Row 1, Col 0
-            </asp:TableCell>
-            <asp:TableCell>
-                Row 1, Col 1
             </asp:TableCell>
         </asp:TableRow>
+        <asp:TableRow>
+            <asp:TableCell>
+            </asp:TableCell>
+        </asp:TableRow>
+        <asp:TableRow>
+            <asp:TableCell>
+            </asp:TableCell>
+        </asp:TableRow>
+
     </asp:Table>
 
     </div>
