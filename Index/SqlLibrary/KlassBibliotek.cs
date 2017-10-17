@@ -23,12 +23,12 @@ namespace SqlLibrary
 
         SqlConnection sqlConnection = new SqlConnection(connString);
 
- 
+
 
         //==========KUND REGISTRERING==============================================================
 
-            //Returning an INT. While something is wrong the int will be -1.
-        public int KundRegistrering(string name, string nickName, string passWord, string telefon, 
+        //Returning an INT. While something is wrong the int will be -1.
+        public bool KundRegistrering(string name, string nickName, string passWord, string telefon,
             string eMail, string Street, string City, string Zip, string SSN)
         {
             SqlCommand sqlCommand = new SqlCommand(); //Skapa alltid i varje ny metod
@@ -36,7 +36,7 @@ namespace SqlLibrary
             sqlCommand.CommandType = CommandType.StoredProcedure; //Sparat i Managment studio
             sqlCommand.Connection = sqlConnection;
 
-            sqlCommand.Parameters.Add(CreateVarcharParameter("@name", name));          
+            sqlCommand.Parameters.Add(CreateVarcharParameter("@name", name));
             sqlCommand.Parameters.Add(CreateVarcharParameter("@nick", nickName));
             sqlCommand.Parameters.Add(CreateVarcharParameter("@pass", passWord));
             sqlCommand.Parameters.Add(CreateVarcharParameter("@tel", telefon));
@@ -45,41 +45,55 @@ namespace SqlLibrary
             sqlCommand.Parameters.Add(CreateVarcharParameter("@city", City));
             sqlCommand.Parameters.Add(CreateVarcharParameter("@zip", Zip));
             sqlCommand.Parameters.Add(CreateVarcharParameter("@ssn", SSN));
-            sqlConnection.Open();
-            sqlCommand.ExecuteNonQuery();
-
             
-        //    SqlParameter idParam = new SqlParameter();
-        //    idParam.Direction = ParameterDirection.Output;
-        //    idParam.ParameterName = "@KundID";
-        //    idParam.SqlDbType = SqlDbType.Int;
-        //    sqlCommand.Parameters.Add(idParam);
+            int rowEffected;
+
+            try
+            {
+                sqlConnection.Open();
+                rowEffected = sqlCommand.ExecuteNonQuery();
+
+            }
+            catch
+            {
+                rowEffected = -1;
+
+            }
+            finally
+            {
+                sqlConnection.Close();
+            }
+            return rowEffected > 0; //true or false is returning
 
 
-        //    int newId;
-
-        //    try
-        //    {
-        //        sqlConnection.Open();
-        //        sqlCommand.ExecuteNonQuery();
-        //        newId = (int)sqlCommand.Parameters["@KundID"].Value;
-        //    }
-        //    catch
-        //    {
-        //        newId = -1;
-
-        //    }
-        //    finally
-        //    {
-        //        sqlConnection.Close();
-        //    }
-
-        //    return newId;
-        //}
+            //    SqlParameter idParam = new SqlParameter();
+            //    idParam.Direction = ParameterDirection.Output;
+            //    idParam.ParameterName = "@KundID";
+            //    idParam.SqlDbType = SqlDbType.Int;
+            //    sqlCommand.Parameters.Add(idParam);
 
 
+            //    int newId;
+
+            //    try
+            //    {
+            //        sqlConnection.Open();
+            //        sqlCommand.ExecuteNonQuery();
+            //        newId = (int)sqlCommand.Parameters["@KundID"].Value;
+            //    }
+            //    catch
+            //    {
+            //        newId = -1;
+
+            //    }
+            //    finally
+            //    {
+            //        sqlConnection.Close();
+            //    }
+
+            //    return newId;
+        }
         //=========================================================================================
-
         //==========KUND AVLÄSNING=================================================================
 
         public List<Kunder> ReadAllContacts()
@@ -90,7 +104,7 @@ namespace SqlLibrary
             sqlCommand.CommandType = CommandType.Text; //Sparat i Managment studio
             sqlCommand.Connection = sqlConnection;
 
-            
+
 
             try
             {
@@ -126,11 +140,81 @@ namespace SqlLibrary
             }
             return kunder; //true or false is returning
         }
-
         //=========================================================================================
+        //==========KUND UPPDATERING===============================================================        
+
+        public bool UpdateContact(int kundID, string name, string nickName, string passWord, string telefon,
+            string eMail, string Street, string City, string Zip, string SSN)
+        {
+            SqlCommand sqlCommand = new SqlCommand(); //Skapa alltid i varje ny metod
+            sqlCommand.CommandText = "UpdateContact";
+            sqlCommand.CommandType = CommandType.StoredProcedure; //Sparat i Managment studio
+            sqlCommand.Connection = sqlConnection;
 
 
-        //========CREATE VARCHARS ========================================================
+            //update Contact            
+            sqlCommand.Parameters.Add(CreateIntParam("@KID", kundID));
+            sqlCommand.Parameters.Add(CreateVarcharParameter("@name", name));
+            sqlCommand.Parameters.Add(CreateVarcharParameter("@nick", nickName));
+            sqlCommand.Parameters.Add(CreateVarcharParameter("@pass", passWord));
+            sqlCommand.Parameters.Add(CreateVarcharParameter("@tel", telefon));
+            sqlCommand.Parameters.Add(CreateVarcharParameter("@epost", eMail));
+            sqlCommand.Parameters.Add(CreateVarcharParameter("@street", Street));
+            sqlCommand.Parameters.Add(CreateVarcharParameter("@city", City));
+            sqlCommand.Parameters.Add(CreateVarcharParameter("@zip", Zip));
+            sqlCommand.Parameters.Add(CreateVarcharParameter("@ssn", SSN));
+
+            int rowEffected;
+
+            try
+            {
+                sqlConnection.Open();
+                rowEffected = sqlCommand.ExecuteNonQuery();
+
+            }
+            catch
+            {
+                rowEffected = -1;
+
+            }
+            finally
+            {
+                sqlConnection.Close();
+            }
+            return rowEffected > 0; //true or false is returning
+        }
+        //=========================================================================================
+        //==========KUND BORTTAGNING===============================================================
+
+        public bool TaBortKundRegister(int kundID)
+        {
+            SqlCommand deleteKund = new SqlCommand(); //Skapa alltid i varje ny metod
+            deleteKund.CommandText = "DeleteContact";
+            deleteKund.CommandType = CommandType.StoredProcedure; //Sparat i Managment studio
+            deleteKund.Connection = sqlConnection;
+            SqlParameter idParam = CreateIntParam("@KID", kundID);
+            deleteKund.Parameters.Add(idParam);
+            int rowEffected;
+
+            try
+            {
+                sqlConnection.Open();
+                rowEffected = sqlCommand.ExecuteNonQuery();
+
+            }
+            catch
+            {
+                rowEffected = -1;
+
+            }
+            finally
+            {
+                sqlConnection.Close();
+            }
+            return rowEffected > 0; //true or false is returning
+        }
+        //=========================================================================================
+        //========CREATE VARCHARS =================================================================
 
         private SqlParameter CreateVarcharParameter(string parameterName, string value, int size)
         {
@@ -142,91 +226,19 @@ namespace SqlLibrary
             Param.Value = value;
             return Param;
         }
+        //=========================================================================================
+        //========CREATE INT ======================================================================
 
-        //================================================================================
+        private SqlParameter CreateIntParam(string parameterName, int value)
+        {
+            SqlParameter Param = new SqlParameter();
+            Param.Direction = ParameterDirection.Input;
+            Param.ParameterName = parameterName;
+            Param.SqlDbType = SqlDbType.Int;
+            Param.Value = value;
+            return Param;
+        }
 
-
-        //public  bool DeleteContact(int id)
-        //{
-        //    SqlCommand sqlCommand = new SqlCommand(); //Skapa alltid i varje ny metod
-        //    sqlCommand.CommandText = "DeleteContact";
-        //    sqlCommand.CommandType = CommandType.StoredProcedure; //Sparat i Managment studio
-        //    sqlCommand.Connection = sqlConnection;
-        //    SqlParameter idParam = CreateIntParam("@id", id);
-        //    sqlCommand.Parameters.Add(idParam);
-        //    int rowEffected;
-
-        //    try
-        //    {
-        //        sqlConnection.Open();
-        //        rowEffected = sqlCommand.ExecuteNonQuery();
-
-        //    }
-        //    catch
-        //    {
-        //        rowEffected = -1;
-
-        //    }
-        //    finally
-        //    {
-        //        sqlConnection.Close();
-        //    }
-        //    return rowEffected > 0; //true or false is returning
-        //}
-
-
-        //private  SqlParameter CreateIntParam(string parameterName, int value)
-        //{
-        //    SqlParameter Param = new SqlParameter();
-        //    Param.Direction = ParameterDirection.Input;
-        //    Param.ParameterName = parameterName;
-        //    Param.SqlDbType = SqlDbType.Int;
-        //    Param.Value = value;
-        //    return Param;
-        //}
-
-
-
-        //public bool UpdateContact(int cid, string firstname, string lastname, string ssn)
-        //{
-        //    SqlCommand sqlCommand = new SqlCommand(); //Skapa alltid i varje ny metod
-        //    sqlCommand.CommandText = "UpdateContact";
-        //    sqlCommand.CommandType = CommandType.StoredProcedure; //Sparat i Managment studio
-        //    sqlCommand.Connection = sqlConnection;
-
-
-        //    //update Contact set Firstname = @firstname, Lastname = @lastname where ID = @id
-        //    SqlParameter idParam = CreateIntParam("@id", cid);
-        //    sqlCommand.Parameters.Add(idParam);
-
-        //    SqlParameter firstnameParam = CreateVarcharParameter("@firstname", firstname, 30);
-        //    sqlCommand.Parameters.Add(firstnameParam);
-
-        //    SqlParameter lastnameParam = CreateVarcharParameter("@lastname", lastname, 30);
-        //    sqlCommand.Parameters.Add(lastnameParam);
-
-        //    SqlParameter ssnParam = CreateVarcharParameter("@ssn", ssn, 13);
-        //    sqlCommand.Parameters.Add(ssnParam);
-
-        //    int rowEffected;
-
-        //    try
-        //    {
-        //        sqlConnection.Open();
-        //        rowEffected = sqlCommand.ExecuteNonQuery();
-
-        //    }
-        //    catch
-        //    {
-        //        rowEffected = -1;
-
-        //    }
-        //    finally
-        //    {
-        //        sqlConnection.Close();
-        //    }
-        //    return rowEffected > 0; //true or false is returning
-        //}
 
 
 
