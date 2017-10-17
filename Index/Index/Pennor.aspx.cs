@@ -12,19 +12,22 @@ namespace Index
 		protected void Page_Load(object sender, EventArgs e)
 		{
             
-            if (Request.Cookies["shoppingCart"] != null)
-            {
-                buttonFivePackBuy.Text = Request.Cookies["shoppingCart"].Value;
-
-            }
         }
 
         protected void buttonFivePackBuy_Click(object sender, EventArgs e)
         {
-            string newCookie = Request.Cookies["shoppingCart"].Value;
-            newCookie += "penna";
-            Response.Cookies["shoppingCart"].Value = newCookie;
-            Response.Cookies["shoppingCart"].Expires = DateTime.Now.AddDays(1);
+            if (Request.Cookies["shoppingCart"] != null)
+            {
+                string newCookie = Request.Cookies["shoppingCart"].Value;
+                newCookie += "penna";
+                Response.Cookies["shoppingCart"].Value = newCookie;
+                Response.Cookies["shoppingCart"].Expires = DateTime.Now.AddDays(1);
+            }
+            else
+            {
+                Response.Cookies["shoppingCart"].Value = "penna";
+                Response.Cookies["shoppingCart"].Expires = DateTime.Now.AddDays(1);
+            }
         }
 
         
