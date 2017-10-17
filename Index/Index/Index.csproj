@@ -66,6 +66,7 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Bilder\Pennor.jpg" />
     <Content Include="Gem.aspx" />
     <Content Include="Häftapparater.aspx" />
     <Content Include="Main.Master" />
