@@ -19,7 +19,7 @@ namespace SqlLibrary
     public class KlassBibliotek
     {
         // INSERT THE CONNECTION STRING FROM THE DATABASE!
-        static string connString = @"";
+        static string connString = @"Data Source=.;Initial Catalog=JoakimVonAnka;Integrated Security=True";
 
         SqlConnection sqlConnection = new SqlConnection(connString);
 
@@ -67,8 +67,6 @@ namespace SqlLibrary
                 sqlConnection.Close();
             }
             return rowEffected > 0; //true or false is returning
-
-
            
         }
         //=========================================================================================
@@ -78,10 +76,9 @@ namespace SqlLibrary
         {
             List<Kunder> kunder = new List<Kunder>();
             SqlCommand sqlCommand = new SqlCommand(); //Skapa alltid i varje ny metod
-            sqlCommand.CommandText = "select * from kundRegister";
+            sqlCommand.CommandText = "select * from Kunder";
             sqlCommand.CommandType = CommandType.Text; //Sparat i Managment studio
             sqlCommand.Connection = sqlConnection;
-
 
 
             try
@@ -92,12 +89,12 @@ namespace SqlLibrary
                 while (reader.Read())
                 {
                     Kunder kund = new Kunder();
-                    kund.kundID = (int)reader["KID"]; //(int) Called a Casting
-                    kund.name = (string)reader["name"];
-                    kund.nickName = (string)reader["nickname"];
+                    kund.kundID = (int)reader["KundID"]; //(int) Called a Casting
+                    kund.name = (string)reader["Name"];
+                    kund.nickName = (string)reader["NickName"];
                     kund.passWord = (string)reader["Password"];
-                    kund.telefon = (string)reader["telefon"];
-                    kund.eMail = (string)reader["Email"];
+                    kund.telefon = (string)reader["Telefon"];
+                    kund.eMail = (string)reader["Epost"];
                     kund.Street = (string)reader["Street"];
                     kund.City = (string)reader["City"];
                     kund.Zip = (string)reader["Zip"];
@@ -125,7 +122,7 @@ namespace SqlLibrary
             string eMail, string Street, string City, string Zip, string SSN)
         {
             SqlCommand sqlCommand = new SqlCommand(); //Skapa alltid i varje ny metod
-            sqlCommand.CommandText = "UpdateContact";
+            sqlCommand.CommandText = "UpdateUser";
             sqlCommand.CommandType = CommandType.StoredProcedure; //Sparat i Managment studio
             sqlCommand.Connection = sqlConnection;
 
@@ -167,7 +164,7 @@ namespace SqlLibrary
         public bool TaBortKundRegister(int kundID)
         {
             SqlCommand deleteKund = new SqlCommand(); //Skapa alltid i varje ny metod
-            deleteKund.CommandText = "DeleteContact";
+            deleteKund.CommandText = "DeleteUser";
             deleteKund.CommandType = CommandType.StoredProcedure; //Sparat i Managment studio
             deleteKund.Connection = sqlConnection;
             SqlParameter idParam = CreateIntParam("@KID", kundID);
@@ -198,22 +195,22 @@ namespace SqlLibrary
 
         //=========================================================================================
         //=========================================================================================
-        //====================      REGISTRERING AV VAROR      ====================================
+        //====================      REGISTRERING AV Artiklar      =================================
         //=========================================================================================
         //=========================================================================================  
         #region
 
         //=========================================================================================
         //==========ARTIKEL REGISTRERING===========================================================
-        public bool ArtikelRegistrering(int AID, string artikelnamn, string pris, string kategori)
+        public bool ArtikelRegistrering(/*int AID,*/ string artikelnamn, int pris, string kategori)
         {
             SqlCommand sqlCommand = new SqlCommand(); //Skapa alltid i varje ny metod
             sqlCommand.CommandText = "RegisterArtikel";
             sqlCommand.CommandType = CommandType.StoredProcedure; //Sparat i Managment studio
             sqlCommand.Connection = sqlConnection;
 
-            sqlCommand.Parameters.Add(CreateIntParam("@ArtikelID", AID));
-            sqlCommand.Parameters.Add(CreateVarcharParameter("@artikelnamn", artikelnamn));
+            //sqlCommand.Parameters.Add(CreateIntParam("@AID", AID));
+            sqlCommand.Parameters.Add(CreateVarcharParameter("@artikelNamn", artikelnamn));
             sqlCommand.Parameters.Add(CreateIntParam("@pris", pris));
             sqlCommand.Parameters.Add(CreateVarcharParameter("@kategori", kategori));
            
@@ -247,7 +244,7 @@ namespace SqlLibrary
         {
             List<Artiklar> artiklar = new List<Artiklar>();
             SqlCommand sqlCommandArt = new SqlCommand(); //Skapa alltid i varje ny metod
-            sqlCommandArt.CommandText = "select * from RegisterArtikel";
+            sqlCommandArt.CommandText = "select * from Artiklar";
             sqlCommandArt.CommandType = CommandType.Text; //Sparat i Managment studio
             sqlCommandArt.Connection = sqlConnection;
 
@@ -280,7 +277,7 @@ namespace SqlLibrary
         //=========================================================================================
         //==========ARTIKEL UPPDATERING============================================================
 
-        public bool UpdateArtikel(int AID, string artikelnamn, string pris, string kategori)
+        public bool UpdateArtikel(int AID, string artikelnamn, int pris, string kategori)
         {
             SqlCommand sqlCommand = new SqlCommand(); //Skapa alltid i varje ny metod
             sqlCommand.CommandText = "UpdateArtikel";
@@ -289,7 +286,7 @@ namespace SqlLibrary
 
            
             sqlCommand.Parameters.Add(CreateIntParam("@AID", AID));
-            sqlCommand.Parameters.Add(CreateVarcharParameter("@artikelnamn", artikelnamn));
+            sqlCommand.Parameters.Add(CreateVarcharParameter("@artikelNamn", artikelnamn));
             sqlCommand.Parameters.Add(CreateIntParam("@pris", pris));
             sqlCommand.Parameters.Add(CreateVarcharParameter("@kategori", kategori));
            
@@ -322,7 +319,7 @@ namespace SqlLibrary
             deleteArtikel.CommandText = "DeleteArtikel";
             deleteArtikel.CommandType = CommandType.StoredProcedure; //Sparat i Managment studio
             deleteArtikel.Connection = sqlConnection;
-            SqlParameter idParam = CreateIntParam("@ArtikelID", AID);
+            SqlParameter idParam = CreateIntParam("@AID", AID);
             deleteArtikel.Parameters.Add(idParam);
             int rowEffected;
 
@@ -354,13 +351,13 @@ namespace SqlLibrary
         #region
         //========CREATE VARCHARS =================================================================
 
-        private SqlParameter CreateVarcharParameter(string parameterName, string value, int size)
+        private SqlParameter CreateVarcharParameter(string parameterName, string value /*, int value*/)
         {
             SqlParameter Param = new SqlParameter();
             Param.Direction = ParameterDirection.Input;
             Param.ParameterName = parameterName;
             Param.SqlDbType = SqlDbType.VarChar;
-            Param.Size = size;
+            //Param.Size = size;
             Param.Value = value;
             return Param;
         }
@@ -373,7 +370,7 @@ namespace SqlLibrary
             Param.Direction = ParameterDirection.Input;
             Param.ParameterName = parameterName;
             Param.SqlDbType = SqlDbType.Int;
-            Param.Value = value;
+            //Param.Value = value;
             return Param;
         }
         #endregion
