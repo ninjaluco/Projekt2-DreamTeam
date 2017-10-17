@@ -14,5 +14,23 @@ namespace Index
 			
 
 		}
-	}
+        //Kallas på från alla sidor. Lägger till varan i cookie. TODO: lägg till funktionalitet för mer än en vara.
+        public void buttonBuyThings_Click(object sender, EventArgs e)
+        {
+            Button clickedButton = (Button)sender;
+            //implementera cookies olika beroende på vem som är inloggad
+            if (Request.Cookies["shoppingCart"] != null)
+            {
+                string newCookie = Request.Cookies["shoppingCart"].Value;
+                newCookie += clickedButton.CommandArgument;
+                Response.Cookies["shoppingCart"].Value = newCookie;
+                Response.Cookies["shoppingCart"].Expires = DateTime.Now.AddDays(1);
+            }
+            else
+            {
+                Response.Cookies["shoppingCart"].Value = clickedButton.CommandArgument;
+                Response.Cookies["shoppingCart"].Expires = DateTime.Now.AddDays(1);
+            }
+        }
+    }
 }

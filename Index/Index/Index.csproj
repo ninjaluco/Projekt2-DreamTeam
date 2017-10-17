@@ -75,7 +75,7 @@
     <Content Include="Js\MyJavaScript.js" />
     <Content Include="Main.Master" />
     <None Include="packages.config" />
-    <Content Include="myJavaStyle.css" />
+    <Content Include="main.css" />
     <Content Include="Papper.aspx" />
     <Content Include="Pennor.aspx" />
     <Content Include="Scripts\jquery-1.9.1.min.map" />
