@@ -2,5 +2,5 @@
 
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-	<img src="Bilder/10798171-Some-Office-Stuff-Hand-Drawn-Stock-Vector-doodle.jpg" />
+	 
 	</asp:Content>
