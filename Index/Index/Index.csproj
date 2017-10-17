@@ -66,6 +66,7 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Bilder\10798171-Some-Office-Stuff-Hand-Drawn-Stock-Vector-doodle.jpg" />
     <Content Include="Bilder\5000272_301_220.jpg" />
     <Content Include="Bilder\pappernfokus.jpg" />
     <Content Include="Bilder\Pennor.jpg" />
