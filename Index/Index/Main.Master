@@ -28,20 +28,12 @@
 			<!-- Collect the nav links, forms, and other content for toggling -->
 			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav">
-					<li class="active"><a href="#">Kläder</a></li>
-					<li><a href="#">Spel</a></li>
-					<li class="dropdown">
-						<a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
-						<ul class="dropdown-menu">
-							<li><a href="#">Kläder</a></li>
-							<li><a href="#">Spel</a></li>
-							<li><a href="#">Info</a></li>
-							<li class="divider"></li>
-							<li><a href="#">Separated link</a></li>
-							<li class="divider"></li>
-							<li><a href="#">One more separated link</a></li>
-						</ul>
-					</li>
+					<li class="active"><a href="Pennor.aspx">Pennor</a></li>
+					<li><a href="Papper.aspx">Papper</a></li>
+					<li><a href="Häftapparater.aspx">Häftapparater</a></li>
+					<li><a href="Gem.aspx">Gem</a></li>
+
+					
 				</ul>
 				<div class="col-sm-3 col-md-3">
 					<form class="navbar-form" role="search">

@@ -66,8 +66,12 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Gem.aspx" />
+    <Content Include="Häftapparater.aspx" />
     <Content Include="Main.Master" />
     <None Include="packages.config" />
+    <Content Include="Papper.aspx" />
+    <Content Include="Pennor.aspx" />
     <Content Include="Scripts\jquery-1.9.1.min.map" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -100,8 +104,22 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Gem.aspx.cs">
+      <DependentUpon>Gem.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Gem.aspx.designer.cs">
+      <DependentUpon>Gem.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Häftapparater.aspx.cs">
+      <DependentUpon>Häftapparater.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Häftapparater.aspx.designer.cs">
+      <DependentUpon>Häftapparater.aspx</DependentUpon>
     </Compile>
     <Compile Include="Index_1.aspx.cs">
       <DependentUpon>Index_1.aspx</DependentUpon>
@@ -116,6 +134,20 @@
     </Compile>
     <Compile Include="Main.Master.designer.cs">
       <DependentUpon>Main.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Papper.aspx.cs">
+      <DependentUpon>Papper.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Papper.aspx.designer.cs">
+      <DependentUpon>Papper.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pennor.aspx.cs">
+      <DependentUpon>Pennor.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pennor.aspx.designer.cs">
+      <DependentUpon>Pennor.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
