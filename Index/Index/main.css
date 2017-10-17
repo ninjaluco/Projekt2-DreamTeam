@@ -3,7 +3,7 @@
     width: 100px;
 
 }
-#User {
+#User,#Lösen {
     margin-top: 11px;
 }
 #Search{
@@ -12,3 +12,11 @@
 #SearchKnapp {
     margin-top: 7px;
 }
+
+
+html {
+    background: url('Bilder/10798171-Some-Office-Stuff-Hand-Drawn-Stock-Vector-doodle.jpg') no-repeat;
+    background-attachment:fixed;
+    background-size:100%;
+    
+} 
