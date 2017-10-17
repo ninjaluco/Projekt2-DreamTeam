@@ -1,0 +1,34 @@
+﻿.cd-cart-trigger,
+.cd-cart {
+    position: fixed;
+    bottom: 20px;
+    right: 5%;
+    transition: transform .2s;
+}
+
+.empty .cd-cart-trigger,
+.empty .cd-cart {
+    /* hide cart */
+    transform: translateY(150px);
+}
+
+2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 .cd-cart .wrapper {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    z-index: 2;
+    overflow: hidden;
+    height: 72px;
+    width: 72px;
+    border-radius: 6px;
+    transition: height .4s .1s, width .4s .1s, box-shadow .3s;
+    transition-timing-function: cubic-bezier(0.67, 0.17, 0.32, 0.95);
+    background: #ffffff;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.17);
+}
+
+.cart-open .cd-cart .wrapper {
+    height: 100%;
+    width: 100%;
+    transition-delay: 0s;
+}
