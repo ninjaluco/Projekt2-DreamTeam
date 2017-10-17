@@ -18,6 +18,7 @@ namespace SqlLibrary
 
     public class KlassBibliotek
     {
+        // INSERT THE CONNECTION STRING FROM THE DATABASE!
         static string connString = @"";
 
         SqlConnection sqlConnection = new SqlConnection(connString);
@@ -31,47 +32,50 @@ namespace SqlLibrary
             string eMail, string Street, string City, string Zip, string SSN)
         {
             SqlCommand sqlCommand = new SqlCommand(); //Skapa alltid i varje ny metod
-            sqlCommand.CommandText = "KundRegistrering";
+            sqlCommand.CommandText = "Register";
             sqlCommand.CommandType = CommandType.StoredProcedure; //Sparat i Managment studio
             sqlCommand.Connection = sqlConnection;
 
             sqlCommand.Parameters.Add(CreateVarcharParameter("@name", name));          
-            sqlCommand.Parameters.Add(CreateVarcharParameter("@nickName", nickName));
-            sqlCommand.Parameters.Add(CreateVarcharParameter("@passWord", passWord));
-            sqlCommand.Parameters.Add(CreateVarcharParameter("@telefon", telefon));
-            sqlCommand.Parameters.Add(CreateVarcharParameter("@Email", eMail));
-            sqlCommand.Parameters.Add(CreateVarcharParameter("@Street", Street));
-            sqlCommand.Parameters.Add(CreateVarcharParameter("@City", City));
-            sqlCommand.Parameters.Add(CreateVarcharParameter("@Zip", Zip));
+            sqlCommand.Parameters.Add(CreateVarcharParameter("@nick", nickName));
+            sqlCommand.Parameters.Add(CreateVarcharParameter("@pass", passWord));
+            sqlCommand.Parameters.Add(CreateVarcharParameter("@tel", telefon));
+            sqlCommand.Parameters.Add(CreateVarcharParameter("@epost", eMail));
+            sqlCommand.Parameters.Add(CreateVarcharParameter("@street", Street));
+            sqlCommand.Parameters.Add(CreateVarcharParameter("@city", City));
+            sqlCommand.Parameters.Add(CreateVarcharParameter("@zip", Zip));
             sqlCommand.Parameters.Add(CreateVarcharParameter("@ssn", SSN));
+            sqlConnection.Open();
+            sqlCommand.ExecuteNonQuery();
+
             
-            SqlParameter idParam = new SqlParameter();
-            idParam.Direction = ParameterDirection.Output;
-            idParam.ParameterName = "@KundID";
-            idParam.SqlDbType = SqlDbType.Int;
-            sqlCommand.Parameters.Add(idParam);
+        //    SqlParameter idParam = new SqlParameter();
+        //    idParam.Direction = ParameterDirection.Output;
+        //    idParam.ParameterName = "@KundID";
+        //    idParam.SqlDbType = SqlDbType.Int;
+        //    sqlCommand.Parameters.Add(idParam);
 
 
-            int newId;
+        //    int newId;
 
-            try
-            {
-                sqlConnection.Open();
-                sqlCommand.ExecuteNonQuery();
-                newId = (int)sqlCommand.Parameters["@KundID"].Value;
-            }
-            catch
-            {
-                newId = -1;
+        //    try
+        //    {
+        //        sqlConnection.Open();
+        //        sqlCommand.ExecuteNonQuery();
+        //        newId = (int)sqlCommand.Parameters["@KundID"].Value;
+        //    }
+        //    catch
+        //    {
+        //        newId = -1;
 
-            }
-            finally
-            {
-                sqlConnection.Close();
-            }
+        //    }
+        //    finally
+        //    {
+        //        sqlConnection.Close();
+        //    }
 
-            return newId;
-        }
+        //    return newId;
+        //}
 
 
         //=========================================================================================
