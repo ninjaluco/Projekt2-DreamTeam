@@ -3,4 +3,11 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 	<p>Pennor</p>
+
+	<img src="Bilder/Pennor.jpg" />
+	<p>5-pack Pris: 99,99:-</p>
+
+
+
+
 </asp:Content>
