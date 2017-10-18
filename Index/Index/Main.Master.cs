@@ -14,7 +14,9 @@ namespace Index
 			
 
 		}
+
 		
+
 		public void buttonBuyThings_Click(object sender, EventArgs e, int amount)
 		{
 			Button clickedButton = (Button)sender;
@@ -31,5 +33,21 @@ namespace Index
             Response.Cookies["shoppingCart"].Value = newCookie;
             Response.Cookies["shoppingCart"].Expires = DateTime.Now.AddDays(1);
         }
+
+		protected void LogIn(object sender, EventArgs e)
+		{
+			
+		}
+
+		protected void SignIn(object sender, EventArgs e)
+		{
+			string user = textBoxUser.Text;
+			string password = textBoxLösen.Text;
+
+			if ()
+			{
+
+			}
+		}
 	}
 }

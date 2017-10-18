@@ -3,8 +3,8 @@
     width: 100px;
 
 }
-#User,#Lösen {
-    margin-top: 11px;
+#textBoxUser,#textBoxLösen,#button1,#button2 {
+   margin-top: 11px;
 }
 #Search{
     margin-top:7px;
