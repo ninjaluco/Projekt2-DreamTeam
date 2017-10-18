@@ -51,40 +51,40 @@ namespace SqlLibrary
             sqlCommand.Parameters.Add(CreateVarcharParameter("@zip", Zip));
             sqlCommand.Parameters.Add(CreateVarcharParameter("@ssn", SSN));
 
-            //bool nameChecker;
-            //SqlCommand checkNameValidation = new SqlCommand("SELECT * FROM Kunder WHERE ([NickName] = @nick)", sqlConnection);
-            //checkNameValidation.Parameters.AddWithValue("@nick",nickName);
-            //SqlDataReader reader = checkNameValidation.ExecuteReader();
+            SqlDataReader readerNick, readerSSN;
+            NameAndSsnChecker(nickName, SSN, out readerNick, out readerSSN);
 
-            //if (reader.HasRows)
-            //{
-            //    nameChecker = false;
-            //}
-            //else
-            //{
-            //    nameChecker = true;
-            //}
+            bool rowEffected;
 
-
-
-            int rowEffected;
-
-            try
+            if (readerNick.HasRows || readerSSN.HasRows || nickName.ToLower() == "admin")
             {
-                sqlConnection.Open();
-                rowEffected = sqlCommand.ExecuteNonQuery();
+
+
+                return rowEffected = false;
             }
-            catch
+            else
             {
-                rowEffected = -1;
+
+                try
+                {
+                    sqlConnection.Open();
+                    rowEffected = (sqlCommand.ExecuteNonQuery() > 0);
+                }
+                catch
+                {
+                    rowEffected = false;
+                }
+                finally
+                {
+                    sqlConnection.Close();
+                }
+                return rowEffected; //true or false is returning
+
             }
-            finally
-            {
-                sqlConnection.Close();
-            }
-            return rowEffected > 0; //true or false is returning
-           
+            
         }
+        
+
         //=========================================================================================
         //==========KUND AVLÄSNING=================================================================
 
@@ -229,7 +229,7 @@ namespace SqlLibrary
             sqlCommand.Parameters.Add(CreateVarcharParameter("@artikelNamn", artikelnamn));
             sqlCommand.Parameters.Add(CreateIntParam("@pris", pris));
             sqlCommand.Parameters.Add(CreateVarcharParameter("@kategori", kategori));
-           
+
 
             int rowEffected;
 
@@ -250,7 +250,7 @@ namespace SqlLibrary
             }
             return rowEffected > 0; //true or false is returning
 
-            
+
         }
 
         //=========================================================================================
@@ -273,9 +273,9 @@ namespace SqlLibrary
                 {
                     Artiklar artikel = new Artiklar();
                     artikel.AID = (int)reader["ArtikelId"];
-                    artikel.artikelnamn = (string)reader["artikelnamn"]; 
+                    artikel.artikelnamn = (string)reader["artikelnamn"];
                     artikel.pris = (int)reader["pris"];
-                    artikel.kategori = (string)reader["kategori"];                    
+                    artikel.kategori = (string)reader["kategori"];
 
                     artiklar.Add(artikel);
                 }
@@ -301,12 +301,12 @@ namespace SqlLibrary
             sqlCommand.CommandType = CommandType.StoredProcedure; //Sparat i Managment studio
             sqlCommand.Connection = sqlConnection;
 
-           
+
             sqlCommand.Parameters.Add(CreateIntParam("@AID", AID));
             sqlCommand.Parameters.Add(CreateVarcharParameter("@artikelNamn", artikelnamn));
             sqlCommand.Parameters.Add(CreateIntParam("@pris", pris));
             sqlCommand.Parameters.Add(CreateVarcharParameter("@kategori", kategori));
-           
+
 
             int rowEffected;
 
@@ -378,7 +378,7 @@ namespace SqlLibrary
             sqlCommand.CommandType = CommandType.StoredProcedure; //Sparat i Managment studio
             sqlCommand.Connection = sqlConnection;
 
-            
+
             sqlCommand.Parameters.Add(CreateIntParam("@OrderID", OID));
             sqlCommand.Parameters.Add(CreateIntParam("@KundID", KID));
             sqlCommand.Parameters.Add(CreateIntParam("@VarukorgID", VID));
@@ -508,6 +508,20 @@ namespace SqlLibrary
             //Param.Value = value;
             return Param;
         }
+
+        //=========================================================================================
+        //========CHECK USERNAME AND SSN ==========================================================
+
+        private void NameAndSsnChecker(string nickName, string SSN, out SqlDataReader readerNick, out SqlDataReader readerSSN)
+        {
+            SqlCommand checkNameValidation = new SqlCommand("SELECT * FROM Kunder WHERE ([NickName] = @nick)", sqlConnection);
+            checkNameValidation.Parameters.AddWithValue("@nick", nickName);
+            readerNick = checkNameValidation.ExecuteReader();
+            SqlCommand checkSSNValidation = new SqlCommand("SELECT * FROM Kunder WHERE ([SSN] = @ssn)", sqlConnection);
+            checkSSNValidation.Parameters.AddWithValue("@ssn", SSN);
+            readerSSN = checkSSNValidation.ExecuteReader();
+        }
+
         #endregion
 
 
