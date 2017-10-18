@@ -19,7 +19,7 @@ namespace SqlLibrary
     public class KlassBibliotek
     {
         // INSERT THE CONNECTION STRING FROM THE DATABASE!
-        static string connString = @"Data Source=.;Initial Catalog=JoakimVonAnka;Integrated Security=True";
+        public static string connString = @"Data Source=.;Initial Catalog=JoakimVonAnka;Integrated Security=True";
       
 
         SqlConnection sqlConnection = new SqlConnection(connString);
