@@ -43,7 +43,7 @@
 				<asp:TextBox ID="textBoxLösen" Width="11%" placeholder="Lösen" textmode="Password" runat="server"></asp:TextBox>
 				<%--<ul class="nav navbar-nav navbar-right">--%>
 				<asp:Button ID="Button1" runat="server" OnClick="LogIn" Text="Login" />
-				<asp:Button ID="Button2" runat="server" OnClick="SignIn" Text="Sign in" />
+				<asp:Button ID="Button2" runat="server" OnClick="Registrera" Text="Registrera" />
 					<%--<li><a href="#"><span id="ID" class="glyphicon glyphicon-log-in"></span>Login</a></li>--%>
 <%--					<li><a href="#"><span id="Sign" class="glyphicon glyphicon-user"></span>Sign Up</a></li>--%>
 

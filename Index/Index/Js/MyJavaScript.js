@@ -22,18 +22,23 @@
 	function LoadAllPennor() {
 		$.getJSON("/Service/Service.aspx?all=1").
 			done(function (artiklar) {
-				$(".row").empty(); console.log(artiklar);
+				$(".container-fluid").empty(); console.log(artiklar);
 
 				for (var i = 0; i < artiklar.length; i++) {
 
 					var tableRow =
-						"<div></div>"+
-					"<div class=\"col-md - 2\"> <h3>" + artiklar[i].artikelnamn + "</h3><p " + artiklar[i].pris + "</p><p>&nbsp</p><p>" +
+						"<span></span>"+
+					"<span class=\"col-md - 2\"> <h3>" + artiklar[i].artikelnamn + "</h3><p " + artiklar[i].pris + "</p><p>&nbsp</p><p>" +
 						"<input type=\"button\" value=\"Delete contact\" /></p>"+
-						"<p><TextBox ID='amountTextBox' type='number' min='1' runat='server' Width='32px'>1</TextBox></p></div>";
+						"<p><TextBox ID='amountTextBox' type='number' min='1' runat='server' Width='32px'>1</TextBox></p></span>";
 					
 					
-					$(".row").append(tableRow);
+					$(".container-fluid").append(tableRow);
+
+					//"<div></div>" +
+					//	"<div class=\"col-md - 2\"> <h3>" + artiklar[i].artikelnamn + "</h3><p " + artiklar[i].pris + "</p><p>&nbsp</p><p>" +
+					//	"<input type=\"button\" value=\"Delete contact\" /></p>" +
+					//	"<p><TextBox ID='amountTextBox' type='number' min='1' runat='server' Width='32px'>1</TextBox></p></div>";
 
 					//<Button ID='addButton' runat='server' OnClick='addButton_Click' Text='Lägg till' CommandArgument='2, '
 				}
@@ -71,3 +76,19 @@
 //				$("#PennorBody").append(tableRow);
 //			}
 //		});
+
+//function CreateBoard(size) {
+//	var row = "<div class='divTableRow'>";
+//	var divEnd = "</div>";
+
+//	for (var i = 0; i < size; i++) {
+//		$("#divTableID").append(row);
+//		for (var j = 0; j < size; j++) {
+//			var cellID = "cellx" + i + "y" + j; //Genererar ett unikt ID till varje cell.
+//			//======= Sparar/skapar en cell(column i en rad) i en variabel, med en gemensam cellklass för alla celler i tabellen samt tilldelar det genererade unika ID:t till cellen.=======//
+//			var col = "<div class='divTableCell' id='" + cellID + "'></div>";
+//			$("#divTableID").append(col); // lägger till en cell i tabellen från den sparade cell variabeln
+//		}
+//		$("#divTableID").append(divEnd);// Stänger tabellen när alla celler är skapade.w
+//	}
+//}
