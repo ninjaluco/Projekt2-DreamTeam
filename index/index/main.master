@@ -6,9 +6,10 @@
 <head runat="server">
 
 	<title></title>
-	<link href="Content/bootstrap.css" rel="stylesheet" />
 	<script src="Scripts/jquery-1.9.1.min.js"></script>
 	<script src="Scripts/bootstrap.min.js"></script>
+	<link href="Content/bootstrap.css" rel="stylesheet" />
+    <script src="Scripts/jquery.cookie-1.4.1.min.js"></script>
 	<link href="main.css" rel="stylesheet" />
 	<script src="Js/MyJavaScript.js"></script>
 	<asp:ContentPlaceHolder ID="head" runat="server">
@@ -47,22 +48,24 @@
 					</div>
 					<%--</form>--%>
 				</div>
-				<asp:TextBox ID="User" Width="11%"  placeholder="User" runat="server"></asp:TextBox>
-				<asp:TextBox ID="Lösen" Width="11%" placeholder="Lösen" runat="server"></asp:TextBox>
-				<ul class="nav navbar-nav navbar-right">
-					<li><a href="#"><span id="ID" class="glyphicon glyphicon-log-in"></span>Login</a></li>
-					<li><a href="#"><span id="Sign" class="glyphicon glyphicon-user"></span>Sign Up</a></li>
+				<asp:TextBox ID="textBoxUser" Width="11%" placeholder="User" runat="server"></asp:TextBox>
+				<asp:TextBox ID="textBoxLösen" Width="11%" placeholder="Lösen" runat="server"></asp:TextBox>
+				<%--<ul class="nav navbar-nav navbar-right">--%>
+				<asp:Button ID="Button1" runat="server" OnClick="LogIn" Text="Login" />
+				<asp:Button ID="Button2" runat="server" OnClick="SignIn" Text="Sign in" />
+					<%--<li><a href="#"><span id="ID" class="glyphicon glyphicon-log-in"></span>Login</a></li>--%>
+<%--					<li><a href="#"><span id="Sign" class="glyphicon glyphicon-user"></span>Sign Up</a></li>--%>
 
 
-				</ul>
+				<%--</ul>--%>
 			</div>
 			<%--/.navbar-collapse --%>
 		</nav>
 		
-        <div>
-            <asp:ContentPlaceHolder ID="MainContent" runat="server">
-            </asp:ContentPlaceHolder>
-        </div>
-    </form>
+		<div>
+			<asp:ContentPlaceHolder ID="MainContent" runat="server">
+			</asp:ContentPlaceHolder>
+		</div>
+	</form>
 </body>
 </html>
