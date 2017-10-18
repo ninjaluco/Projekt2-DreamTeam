@@ -95,10 +95,5 @@ namespace Index
 				Response.Redirect("/RegisterUser.aspx");
 
 		}
-
-		protected void RegisterNewCostumer(object sender, EventArgs e)
-		{
-
-		}
 	}
 }
