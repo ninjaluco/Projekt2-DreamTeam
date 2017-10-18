@@ -12,9 +12,10 @@
 
     <asp:Table id="shoppingCartTable" runat="server"
         CellPadding="10" 
-        GridLines="Both"
-        HorizontalAlign="Center">
+        GridLines="Both">
         <asp:TableRow>
+            <asp:TableCell>
+            </asp:TableCell>
             <asp:TableCell>
             </asp:TableCell>
             <asp:TableCell>
@@ -25,14 +26,20 @@
             </asp:TableCell>
             <asp:TableCell>
             </asp:TableCell>
+            <asp:TableCell>
+            </asp:TableCell>
         </asp:TableRow>
         <asp:TableRow>
             <asp:TableCell>
             </asp:TableCell>
             <asp:TableCell>
             </asp:TableCell>
+            <asp:TableCell>
+            </asp:TableCell>
         </asp:TableRow>
         <asp:TableRow>
+            <asp:TableCell>
+            </asp:TableCell>
             <asp:TableCell>
             </asp:TableCell>
             <asp:TableCell>

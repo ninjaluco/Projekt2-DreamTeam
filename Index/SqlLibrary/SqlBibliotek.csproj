@@ -43,6 +43,7 @@
     <Compile Include="Artiklar.cs" />
     <Compile Include="Kunder.cs" />
     <Compile Include="KlassBibliotek.cs" />
+    <Compile Include="Order.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
