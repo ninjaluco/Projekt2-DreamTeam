@@ -1,14 +1,14 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Main.Master" AutoEventWireup="true" CodeBehind="Varukorg.aspx.cs" Inherits="Index.Varukorg" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <style type="text/css">
-        .auto-style1 {
-            height: 330px;
+        .auto-style2 {
+            height: 216px;
         }
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 
-   <div>
+   <div class="auto-style2">
 
        <asp:Table ID="shoppingCartTable" runat="server"
            CellPadding="10"
@@ -39,7 +39,7 @@
 
                </asp:TableHeaderCell>
                <asp:TableHeaderCell>
-
+                  
                </asp:TableHeaderCell>
                <asp:TableHeaderCell>
  
