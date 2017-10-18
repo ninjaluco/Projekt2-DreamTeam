@@ -44,10 +44,10 @@ namespace Index
 			string user = textBoxUser.Text;
 			string password = textBoxLösen.Text;
 
-			if ()
-			{
+			//if ()
+			//{
 
-			}
+			//}
 		}
 	}
 }
