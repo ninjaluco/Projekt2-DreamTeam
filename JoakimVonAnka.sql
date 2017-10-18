@@ -21,32 +21,39 @@ CREATE TABLE [dbo].[Kunder](
 	[KundID] [int] IDENTITY(1,1) primary key NOT NULL,
 	[NickName] [varchar](max) NOT NULL,
 	[Password] [varchar](max) NOT NULL,
-	[Name] [varchar](max) NULL,
-	[Street] [varchar](max) NULL,
-	[Zip] [varchar](max) NULL,
-	[City] [varchar](max) NULL,
-	[SSN] [varchar](max) NULL,
+	[Name] [varchar](max) NOT NULL,
+	[Street] [varchar](max) NOT NULL,
+	[Zip] [varchar](max) NOT NULL,
+	[City] [varchar](max) NOT NULL,
+	[SSN] [varchar](max) NOT NULL,
 	[Telefon] [varchar](max) NULL,
 	[Epost] [varchar](max) NULL
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 
 GO
+CREATE TABLE [dbo].[Order](
+	[OrderID] [int] IDENTITY(1,1) primary key NOT NULL,
+	[KundID] [int] foreign key references Kunder(KundID) NOT NULL,	
+	[PrisOrder] [int] NULL,
+	[Status] [varchar](max) NOT NULL
+	
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+
+GO
 CREATE TABLE [dbo].[Varukorg](
 	[VarukorgID] [int] IDENTITY(1,1) primary key NOT NULL,
 	[ArtikelID] [int] foreign key references Artiklar(ArtikelID)NOT NULL,
+	[KundID] [int] foreign key references Kunder(KundID) NOT NULL,
+	[OrderID] [int] foreign key references [Order](OrderID) NOT NULL,
 	[Pris] [int] NOT NULL,
 	[Q] [int] NOT NULL,
-	[Total] [int] NOT NULL
+	[PrisOrder] [int]
 ) ON [PRIMARY]
 
 GO
-GO
-CREATE TABLE [dbo].[Order](
-	[OrderID] [int] IDENTITY(1,1) primary key NOT NULL,
-	[KundID] [int] foreign key references Kunder(KundID) NOT NULL,
-	[VarukorgID] [int] foreign key references Varukorg(VarukorgID) NOT NULL,
-	[Status] [varchar](max) NOT NULL
-) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+
+
 		--====PROCEDURE====--
 			--===USER==--
 GO
@@ -148,17 +155,43 @@ END
 GO
 			--===VARUKORG===--
 
-CREATE PROCEDURE [dbo].[RegisterVarukorg] 
+CREATE PROCEDURE [dbo].[RegisterOrder] 
 
-	@artikelNamn varchar(max),
+	@KID int,
+	@OID int output
+AS
+BEGIN
+declare @status varchar(max);
+set @status = 'Skapad'
+declare @prisOrder int;
+set @prisOrder = 0;
+
+insert into [Order]([KundID],[Status],[PrisOrder]) values (@KID, @status,@prisOrder)
+ set @OID= SCOPE_IDENTITY()
+   
+	 	 	 		 
+END
+
+GO
+
+CREATE PROCEDURE [dbo].[RegisterArtikelVarukorg] 
+
+	@AID int,
 	@pris int,
-	@kategori varchar(max)
-	
+	@q int,
+	@KID int,
+	@OID int
 AS
 BEGIN
 
- insert into Artiklar ([ArtikelNamn], [Pris], [Kategori]) values(@artikelNamn, @pris, @kategori);
-	 	 		 
+insert into Varukorg([ArtikelID], [Pris], [Q], [KundID], [OrderID], [PrisOrder]) values(@AID, @pris, @q, @KID, @OID,(@pris*@q));	 
+declare @total int
+select @total =SUM(PrisOrder) 
+FROM Varukorg
+where [KundID]=@KID and [OrderID]=@OID
+
+update [Order] set [PrisOrder]=@total
+	 		 
 END
 
 GO
@@ -188,9 +221,14 @@ execute DeleteUser @KID
 select * from Kunder
 		--==UPDATE==--
 execute	UpdateUser 'Nick7',	'Password7','Name7	Namesson7',	'Street7','Zip7','City7','SSN7','Tel7',	'Epost7',3
-select * from Kunder																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																		
+select * from Kunder	
+
+																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																	
 		--====ARTIKLAR====--
 		  --==REGISTER==--
+
+
+
 execute	[RegisterArtikel]	'TestArtikel1',20,	'Testkategori1'			
 execute	[RegisterArtikel]	'TestArtikel2',30,	'Testkategori2'			
 execute	[RegisterArtikel]	'TestArtikel3',40,	'Testkategori3'			
@@ -207,3 +245,21 @@ select * from Artiklar
 		 --==UPDATE==--
 execute	UpdateArtikel 'UppdateradTestArtikel3',	'1337','UppdateradTestkategori3',3
 select * from Artiklar																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																										
+
+
+
+	--==VARUKORG OCH ORDER==--
+		
+--declare @KID int;
+set @KID = 4;
+
+declare @OID int;
+execute [RegisterOrder]	4,@OID
+select * from [Order]
+
+execute [RegisterArtikelVarukorg] 4, 20,1,4,1
+execute [RegisterArtikelVarukorg] 5, 20,1,4,1
+execute [RegisterArtikelVarukorg] 3, 20,2,4,1
+execute [RegisterArtikelVarukorg] 1, 20,1,4,1
+execute [RegisterArtikelVarukorg] 4, 20,3,4,1
+select*from [Varukorg]

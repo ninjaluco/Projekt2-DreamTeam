@@ -74,6 +74,7 @@
     <Content Include="Gem.aspx" />
     <Content Include="Häftapparater.aspx" />
     <Content Include="Js\MyJavaScript.js" />
+    <Content Include="LogOn.aspx" />
     <Content Include="Main.Master" />
     <None Include="packages.config" />
     <Content Include="main.css" />
@@ -108,6 +109,8 @@
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\jquery-1.9.1.js" />
     <Content Include="Scripts\jquery-1.9.1.min.js" />
+    <Content Include="Scripts\jquery.cookie-1.4.1.min.js" />
+    <Content Include="Scripts\jquery.cookie.js" />
     <Content Include="Varukorg.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -135,6 +138,13 @@
     </Compile>
     <Compile Include="Index_1.aspx.designer.cs">
       <DependentUpon>Index_1.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="LogOn.aspx.cs">
+      <DependentUpon>LogOn.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="LogOn.aspx.designer.cs">
+      <DependentUpon>LogOn.aspx</DependentUpon>
     </Compile>
     <Compile Include="Main.Master.cs">
       <DependentUpon>Main.Master</DependentUpon>
