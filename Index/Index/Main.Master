@@ -1,5 +1,5 @@
 ﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Main.master.cs" Inherits="Index.Main" %>
-
+<%@ Import Namespace="System.Web.Security" %>
 <!DOCTYPE html>
 
 <html>
@@ -58,9 +58,7 @@
 
 				<%--</ul>--%>
 			</div>
-			<%--/.navbar-collapse --%>
 		</nav>
-		
         <div>
             <asp:ContentPlaceHolder ID="MainContent" runat="server">
             </asp:ContentPlaceHolder>
