@@ -15,13 +15,9 @@ namespace Index
 
 		protected void Page_Load(object sender, EventArgs e)
 		{
-
-
-
+			
 		}
-
-
-
+		
 		public void buttonBuyThings_Click(object sender, EventArgs e, int amount)
 		{
 			Button clickedButton = (Button)sender;
@@ -70,7 +66,10 @@ namespace Index
 							if (password == pass)
 							{
 								invalidPass = false;
-								Response.Redirect("/LogOn.aspx");
+								if (user == "Admin")
+									Response.Redirect("/RegistreraArtiklar.aspx");
+								else
+									Response.Redirect("/UserProfile.aspx");
 							}
 						}
 						sqlConnection2.Close();
@@ -93,38 +92,8 @@ namespace Index
 			}
 
 			if (invalidNick)
-				Response.Redirect("/Index_1.aspx");
-			//Skicka till register user page
+				Response.Redirect("/RegisterUser.aspx");
 
-
-
-		}
-
-		//private void ReadAllCon(string kund)
-		//{
-		//	//SqlCommand checkNameValidation = new SqlCommand("SELECT * FROM Kunder WHERE ([NickName] = @nick)", sqlConnection);
-		//	//checkNameValidation.Parameters.AddWithValue("@nick", nickName);
-		//	klassBibliotek.ReadAllContacts();
-		//	List<Kunder> kunder = new List<Kunder>();
-		//	foreach (var item in kunder)
-		//	{
-		//		if (item.nickName == kund)
-		//		{
-		//			Response.Redirect("LogOn.apsx");
-		//		}
-		//	}
-		//}
-
-		protected void SignIn(object sender, EventArgs e)
-		{
-
-			string user = textBoxUser.Text;
-			string password = textBoxLösen.Text;
-
-			if (true)
-			{
-
-			}
 		}
 	}
 }
