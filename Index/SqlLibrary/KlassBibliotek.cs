@@ -20,6 +20,7 @@ namespace SqlLibrary
     {
         // INSERT THE CONNECTION STRING FROM THE DATABASE!
         static string connString = @"Data Source=.;Initial Catalog=JoakimVonAnka;Integrated Security=True";
+      
 
         SqlConnection sqlConnection = new SqlConnection(connString);
 
@@ -365,23 +366,23 @@ namespace SqlLibrary
         //====================      REGISTRERING AV ORDRAR      ===================================
         //=========================================================================================
         //========================================================================================= 
-        //NEEDS TO BE MORE MODIFIED!!!!
+        
         #region
 
         //=========================================================================================
         //==========ORDER AVLÄSNING================================================================
 
-        public bool OrderRegistrering(int OID, int KID, int VID)
+        public bool OrderRegistrering(int OID, int KID)
         {
             SqlCommand sqlCommand = new SqlCommand(); //Skapa alltid i varje ny metod
-            sqlCommand.CommandText = "Order";
+            sqlCommand.CommandText = "RegisterOrder";
             sqlCommand.CommandType = CommandType.StoredProcedure; //Sparat i Managment studio
             sqlCommand.Connection = sqlConnection;
 
 
-            sqlCommand.Parameters.Add(CreateIntParam("@OrderID", OID));
-            sqlCommand.Parameters.Add(CreateIntParam("@KundID", KID));
-            sqlCommand.Parameters.Add(CreateIntParam("@VarukorgID", VID));
+            sqlCommand.Parameters.Add(CreateIntParam("@OID", OID));
+            sqlCommand.Parameters.Add(CreateIntParam("@KID", KID));
+            
 
 
             int rowEffected;
@@ -407,7 +408,7 @@ namespace SqlLibrary
         }
 
         //=========================================================================================
-        //==========KUND AVLÄSNING=================================================================
+        //==========ORDER AVLÄSNING ===============================================================
 
         public List<Order> ReadAllOrders()
         {
@@ -427,7 +428,7 @@ namespace SqlLibrary
                     Order order = new Order();
                     order.OID = (int)reader["OrderID"];
                     order.KID = (int)reader["KundID"];
-                    order.VID = (int)reader["VarukorgID"];
+                    
 
                     Ordrar.Add(order);
                 }
@@ -445,39 +446,21 @@ namespace SqlLibrary
         }
 
         //=========================================================================================
-        //==========ARTIKEL RADERING===============================================================
-
-        public bool TaBortOrder(int OID)
-        {
-            SqlCommand Ordrar = new SqlCommand(); //Skapa alltid i varje ny metod
-            Ordrar.CommandText = "OrderDelete";
-            Ordrar.CommandType = CommandType.StoredProcedure; //Sparat i Managment studio
-            Ordrar.Connection = sqlConnection;
-            SqlParameter idParam = CreateIntParam("@OID", OID);
-            Ordrar.Parameters.Add(idParam);
-            int rowEffected;
-
-            try
-            {
-                sqlConnection.Open();
-                rowEffected = Ordrar.ExecuteNonQuery();
-
-            }
-            catch
-            {
-                rowEffected = -1;
-
-            }
-            finally
-            {
-                sqlConnection.Close();
-            }
-            return rowEffected > 0; //true or false is returning
-        }
-
 
 
         #endregion
+
+        //=========================================================================================
+        //=========================================================================================
+        //====================      REGISTRERING AV VARUKORGSARTIKLAR      ========================
+        //=========================================================================================
+        //========================================================================================= 
+        #region
+
+        
+
+        #endregion
+
         //=========================================================================================
         //=========================================================================================
         //====================      HELPING METHODS      ==========================================

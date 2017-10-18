@@ -45,6 +45,7 @@
     <Compile Include="KlassBibliotek.cs" />
     <Compile Include="Order.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="VarukorgsArtikel.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
