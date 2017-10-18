@@ -272,6 +272,7 @@ namespace SqlLibrary
                 while (reader.Read())
                 {
                     Artiklar artikel = new Artiklar();
+                    artikel.AID = (int)reader["ArtikelId"];
                     artikel.artikelnamn = (string)reader["artikelnamn"]; 
                     artikel.pris = (int)reader["pris"];
                     artikel.kategori = (string)reader["kategori"];                    

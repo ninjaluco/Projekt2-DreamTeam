@@ -21,34 +21,54 @@ namespace Index
 
                 foreach (var artikel in data)
                 {
-                    Artiklar artikelInfo = artikelList.FirstOrDefault(x => x.AID == int.Parse(artikel));
-
-
-                    for (int i = 0; i < shoppingCartTable.Rows.Count; i++)
+                    if (artikel != "")
                     {
-                        if (artikelInfo.AID.ToString() == shoppingCartTable.Rows[i].Cells[0].Text)
+                        bool exists = false;
+                        Artiklar artikelInfo = artikelList.FirstOrDefault(x => x.AID == int.Parse(artikel));
+                        if (artikelInfo != null)
                         {
-                            int numberOf = int.Parse(shoppingCartTable.Rows[i].Cells[2].Text);
-                            numberOf++;
-                            shoppingCartTable.Rows[i].Cells[2].Text = numberOf.ToString();
+                            for (int i = 0; i < shoppingCartTable.Rows.Count; i++)
+                            {
+                                if (artikelInfo.AID.ToString() == shoppingCartTable.Rows[i].Cells[0].Text)
+                                {
+                                    int numberOf = int.Parse(shoppingCartTable.Rows[i].Cells[2].Text);
+                                    numberOf++;
+                                    shoppingCartTable.Rows[i].Cells[2].Text = numberOf.ToString();
+                                    exists = true;
+                                }
+
+                            }
+                            if (!exists)
+                            {
+                                {
+                                    TableRow newRow = new TableRow();
+
+                                    TableCell newCell1 = new TableCell();
+                                    TableCell newCell2 = new TableCell();
+                                    TableCell newCell3 = new TableCell();
+
+
+                                    newCell1.Text = artikelInfo.AID.ToString();
+                                    newCell2.Text = artikelInfo.artikelnamn;
+                                    newCell3.Text = "1";
+
+                                    newRow.Cells.Add(newCell1);
+                                    newRow.Cells.Add(newCell2);
+                                    newRow.Cells.Add(newCell3);
+
+                                    shoppingCartTable.Rows.Add(newRow);
+
+
+                                }
+                            }
+
                         }
-                        else
-                        {
-                            TableRow newRow = new TableRow();
 
-                            TableCell[] cells = new TableCell[3];
-                           
 
-                            cells[0].Text = artikelInfo.AID.ToString();
-                            cells[1].Text = artikelInfo.artikelnamn;
-                            cells[2].Text = "1";
 
-                            newRow.Cells.AddRange(cells);
 
-                            shoppingCartTable.Rows.Add(newRow);
-                            
-                            
-                        }
+
+
 
                     }
                     
