@@ -19,7 +19,7 @@ namespace Index
         private void LoadShoppingCart()
         {
             //Laddar cookien och plockar ut artikelid för artiklarna i varukorgen. Genererar HTML-tabell.
-            if (Request.Cookies["shoppingCart"].Value != null)
+            if (Request.Cookies["shoppingCart"] != null)
             {
                 string[] data = Request.Cookies["shoppingCart"].Value.Split(',');
                 KlassBibliotek sqlBibliotek = new KlassBibliotek();
@@ -63,9 +63,10 @@ namespace Index
                                     numberBox.Attributes.Add("type", "number");
                                     numberBox.Attributes.Add("min", "1");
                                     numberBox.Attributes.Add("runat", "server");
+                                    numberBox.Attributes.Add("class", "numberBoxes");
                                     numberBox.Text = "1";
                                     numberBox.Attributes.Add("OnTextChanged", "ChangeNumberText");
-                                    numberBox.Attributes.Add("autopostback", "true");
+                                    //numberBox.Attributes.Add("autopostback", "true");
                                     numberBox.Attributes.Add("ID", $"numberBox{shoppingCartTable.Rows.Count - 1}");
 
                                     newCell1.Text = artikelInfo.AID.ToString();

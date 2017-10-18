@@ -6,9 +6,10 @@
 <head runat="server">
 
 	<title></title>
-	<link href="Content/bootstrap.css" rel="stylesheet" />
 	<script src="Scripts/jquery-1.9.1.min.js"></script>
 	<script src="Scripts/bootstrap.min.js"></script>
+	<link href="Content/bootstrap.css" rel="stylesheet" />
+    <script src="Scripts/jquery.cookie-1.4.1.min.js"></script>
 	<link href="main.css" rel="stylesheet" />
 	<script src="Js/MyJavaScript.js"></script>
 	<asp:ContentPlaceHolder ID="head" runat="server">
@@ -61,10 +62,10 @@
 			<%--/.navbar-collapse --%>
 		</nav>
 		
-        <div>
-            <asp:ContentPlaceHolder ID="MainContent" runat="server">
-            </asp:ContentPlaceHolder>
-        </div>
-    </form>
+		<div>
+			<asp:ContentPlaceHolder ID="MainContent" runat="server">
+			</asp:ContentPlaceHolder>
+		</div>
+	</form>
 </body>
 </html>
