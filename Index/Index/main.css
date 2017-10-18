@@ -14,9 +14,8 @@
 }
 
 
-html {
+#Image1 {
     background: url('Bilder/10798171-Some-Office-Stuff-Hand-Drawn-Stock-Vector-doodle.jpg') no-repeat;
-    background-attachment:fixed;
-    background-size:100%;
-    
+    background-attachment: fixed;
+    background-size: 100%;
 } 
