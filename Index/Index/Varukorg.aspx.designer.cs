@@ -20,5 +20,14 @@ namespace Index {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Table shoppingCartTable;
+        
+        /// <summary>
+        /// sumOfAll control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TableHeaderCell sumOfAll;
     }
 }

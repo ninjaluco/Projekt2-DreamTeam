@@ -12,7 +12,13 @@ namespace Index
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            //Laddar cookien och plockar ut artikelid för artiklarna i varukorgen.
+            LoadShoppingCart();
+
+        }
+
+        private void LoadShoppingCart()
+        {
+            //Laddar cookien och plockar ut artikelid för artiklarna i varukorgen. Genererar HTML-tabell.
             if (Request.Cookies["shoppingCart"].Value != null)
             {
                 string[] data = Request.Cookies["shoppingCart"].Value.Split(',');
@@ -33,7 +39,10 @@ namespace Index
                                 {
                                     int numberOf = int.Parse(shoppingCartTable.Rows[i].Cells[2].Text);
                                     numberOf++;
-                                    shoppingCartTable.Rows[i].Cells[2].Text = numberOf.ToString();
+                                    int totalPrice = numberOf * artikelInfo.pris;
+                                    shoppingCartTable.Rows[i].Cells[2].Text = $"{numberOf.ToString()}";
+                                    shoppingCartTable.Rows[i].Cells[4].Text = $"{totalPrice.ToString()}";
+
                                     exists = true;
                                 }
 
@@ -46,98 +55,41 @@ namespace Index
                                     TableCell newCell1 = new TableCell();
                                     TableCell newCell2 = new TableCell();
                                     TableCell newCell3 = new TableCell();
+                                    TableCell newCell4 = new TableCell();
+                                    TableCell newCell5 = new TableCell();
 
 
                                     newCell1.Text = artikelInfo.AID.ToString();
                                     newCell2.Text = artikelInfo.artikelnamn;
                                     newCell3.Text = "1";
+                                    newCell4.Text = $"{artikelInfo.pris.ToString()}";
+                                    newCell5.Text = $"{artikelInfo.pris.ToString()}";
+                                    newCell5.CssClass = "sum";
 
                                     newRow.Cells.Add(newCell1);
                                     newRow.Cells.Add(newCell2);
                                     newRow.Cells.Add(newCell3);
+                                    newRow.Cells.Add(newCell4);
+                                    newRow.Cells.Add(newCell5);
 
-                                    shoppingCartTable.Rows.Add(newRow);
-
-
+                                    shoppingCartTable.Rows.AddAt(shoppingCartTable.Rows.Count - 1, newRow);
                                 }
                             }
-
                         }
-
-
-
-
-
-
-
                     }
-                    
-
-                    
-
-
-                    //if (artikel == "1")
-                    //{
-                    //    if (shoppingCartTable.Rows[0].Cells[0].Text == "")
-                    //    {
-                    //        shoppingCartTable.Rows[0].Cells[0].Text += "Häftapparat";
-                    //        shoppingCartTable.Rows[0].Cells[1].Text = "1";
-                    //    }
-                    //    else
-                    //    {
-                    //        int numberOf = int.Parse(shoppingCartTable.Rows[0].Cells[1].Text);
-                    //        ++numberOf;
-                    //        shoppingCartTable.Rows[0].Cells[1].Text = numberOf.ToString();
-
-                    //    }
-                    //}
-                    //else if (artikel == "2")
-                    //{
-                        
-                    //    if (shoppingCartTable.Rows[1].Cells[0].Text == "")
-                    //    {
-                    //        shoppingCartTable.Rows[1].Cells[0].Text += "Penna";
-                    //        shoppingCartTable.Rows[1].Cells[1].Text = "1";
-                    //    }
-                    //    else
-                    //    {
-                    //        int numberOf = int.Parse(shoppingCartTable.Rows[1].Cells[1].Text);
-                    //        ++numberOf;
-                    //        shoppingCartTable.Rows[1].Cells[1].Text = numberOf.ToString();
-                    //    }
-                    //}
-                    //else if (artikel == "3")
-                    //{
-                    //    if (shoppingCartTable.Rows[2].Cells[0].Text == "")
-                    //    {
-                    //        shoppingCartTable.Rows[2].Cells[0].Text += "Gem";
-                    //        shoppingCartTable.Rows[2].Cells[1].Text = "1";
-                    //    }
-                    //    else
-                    //    {
-                    //        int numberOf = int.Parse(shoppingCartTable.Rows[2].Cells[1].Text);
-                    //        ++numberOf;
-                    //        shoppingCartTable.Rows[2].Cells[1].Text = numberOf.ToString();
-                    //    }
-                    //}
-                    //else if (artikel == "4")
-                    //{
-                    //    if (shoppingCartTable.Rows[3].Cells[0].Text == "")
-                    //    {
-                    //        shoppingCartTable.Rows[3].Cells[0].Text += "Papper";
-                    //        shoppingCartTable.Rows[3].Cells[1].Text = "1";
-                    //    }
-                    //    else
-                    //    {
-                    //        int numberOf = int.Parse(shoppingCartTable.Rows[3].Cells[1].Text);
-                    //        ++numberOf;
-                    //        shoppingCartTable.Rows[3].Cells[1].Text = numberOf.ToString();
-                    //    }
-                    //}
                 }
-                
-            }
+                int superSum = 0;
+                for (int i = 0; i < shoppingCartTable.Rows.Count; i++)
+                {
+                    if (shoppingCartTable.Rows[i].Cells[4].CssClass == "sum")
+                    {
+                        superSum += int.Parse(shoppingCartTable.Rows[i].Cells[4].Text);
+                    }
+                }
+                sumOfAll.Text = $"Totalsumma: {superSum.ToString()} kr";
 
+
+            }
         }
     }
 }
