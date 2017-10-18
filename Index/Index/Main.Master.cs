@@ -67,7 +67,8 @@ namespace Index
 							{
 								invalidPass = false;
 								if (user == "Admin")
-									Response.Redirect("/RegistreraArtiklar.aspx");
+									Response.Redirect("/Admin.aspx");
+									
 								else
 									Response.Redirect("/UserProfile.aspx");
 							}
@@ -96,7 +97,7 @@ namespace Index
 
 		}
 
-		protected void Button2_Click(object sender, EventArgs e)
+		protected void Registrera(object sender, EventArgs e)
 		{
 
 		}

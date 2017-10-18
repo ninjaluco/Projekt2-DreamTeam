@@ -24,5 +24,10 @@ namespace Index
             int amount = int.Parse(amountTextBox.Text);
             this.Master.buttonBuyThings_Click(sender, e, amount);
         }
-    }
+
+		protected void Button1_Click()
+		{
+
+		}
+	}
 }
