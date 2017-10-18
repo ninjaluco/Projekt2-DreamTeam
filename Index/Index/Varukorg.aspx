@@ -10,43 +10,46 @@
 
    <div>
 
-    <asp:Table id="shoppingCartTable" runat="server"
-        CellPadding="10" 
-        GridLines="Both">
-        <asp:TableRow>
-            <asp:TableCell>
-            </asp:TableCell>
-            <asp:TableCell>
-            </asp:TableCell>
-            <asp:TableCell>
-            </asp:TableCell>
-        </asp:TableRow>
-        <asp:TableRow>
-            <asp:TableCell>
-            </asp:TableCell>
-            <asp:TableCell>
-            </asp:TableCell>
-            <asp:TableCell>
-            </asp:TableCell>
-        </asp:TableRow>
-        <asp:TableRow>
-            <asp:TableCell>
-            </asp:TableCell>
-            <asp:TableCell>
-            </asp:TableCell>
-            <asp:TableCell>
-            </asp:TableCell>
-        </asp:TableRow>
-        <asp:TableRow>
-            <asp:TableCell>
-            </asp:TableCell>
-            <asp:TableCell>
-            </asp:TableCell>
-            <asp:TableCell>
-            </asp:TableCell>
-        </asp:TableRow>
+       <asp:Table ID="shoppingCartTable" runat="server"
+           CellPadding="10"
+           GridLines="Both"
+           class="table table-striped">
+           <asp:TableHeaderRow>
+               <asp:TableHeaderCell>
+                Artikel-ID
+               </asp:TableHeaderCell>
+               <asp:TableHeaderCell>
+                Artikelnamn
+               </asp:TableHeaderCell>
+               <asp:TableHeaderCell>
+                Antal
+               </asp:TableHeaderCell>
+               <asp:TableHeaderCell>
+                Pris/st (kr)
+               </asp:TableHeaderCell>
+               <asp:TableHeaderCell>
+                Summa (kr)
+               </asp:TableHeaderCell>
+           </asp:TableHeaderRow>
+           <asp:TableHeaderRow>
+               <asp:TableHeaderCell>
 
-    </asp:Table>
+               </asp:TableHeaderCell>
+               <asp:TableHeaderCell>
+
+               </asp:TableHeaderCell>
+               <asp:TableHeaderCell>
+
+               </asp:TableHeaderCell>
+               <asp:TableHeaderCell>
+ 
+                   </asp:TableHeaderCell>
+               <asp:TableHeaderCell ID="sumOfAll">
+                Totalsumma:
+               </asp:TableHeaderCell>
+           </asp:TableHeaderRow>
+       </asp:Table>
+       
 
     </div>
 
