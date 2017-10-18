@@ -174,7 +174,7 @@ namespace SqlLibrary
             try
             {
                 sqlConnection.Open();
-                rowEffected = sqlCommand.ExecuteNonQuery();
+                rowEffected = deleteKund.ExecuteNonQuery();
 
             }
             catch
@@ -277,7 +277,7 @@ namespace SqlLibrary
         //=========================================================================================
         //==========ARTIKEL UPPDATERING============================================================
 
-        public bool UpdateArtikel(int AID, string artikelnamn, string pris, string kategori)
+        public bool UpdateArtikel(int AID, string artikelnamn, int pris, string kategori)
         {
             SqlCommand sqlCommand = new SqlCommand(); //Skapa alltid i varje ny metod
             sqlCommand.CommandText = "UpdateArtikel";
