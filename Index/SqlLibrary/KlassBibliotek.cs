@@ -83,18 +83,7 @@ namespace SqlLibrary
             }
             
         }
-        //=========================================================================================
-        //========CHECK USERNAME AND SSN ==========================================================
-
-        private void NameAndSsnChecker(string nickName, string SSN, out SqlDataReader readerNick, out SqlDataReader readerSSN)
-        {
-            SqlCommand checkNameValidation = new SqlCommand("SELECT * FROM Kunder WHERE ([NickName] = @nick)", sqlConnection);
-            checkNameValidation.Parameters.AddWithValue("@nick", nickName);
-            readerNick = checkNameValidation.ExecuteReader();
-            SqlCommand checkSSNValidation = new SqlCommand("SELECT * FROM Kunder WHERE ([SSN] = @ssn)", sqlConnection);
-            checkSSNValidation.Parameters.AddWithValue("@ssn", SSN);
-            readerSSN = checkSSNValidation.ExecuteReader();
-        }
+        
 
         //=========================================================================================
         //==========KUND AVLÄSNING=================================================================
@@ -519,6 +508,20 @@ namespace SqlLibrary
             //Param.Value = value;
             return Param;
         }
+
+        //=========================================================================================
+        //========CHECK USERNAME AND SSN ==========================================================
+
+        private void NameAndSsnChecker(string nickName, string SSN, out SqlDataReader readerNick, out SqlDataReader readerSSN)
+        {
+            SqlCommand checkNameValidation = new SqlCommand("SELECT * FROM Kunder WHERE ([NickName] = @nick)", sqlConnection);
+            checkNameValidation.Parameters.AddWithValue("@nick", nickName);
+            readerNick = checkNameValidation.ExecuteReader();
+            SqlCommand checkSSNValidation = new SqlCommand("SELECT * FROM Kunder WHERE ([SSN] = @ssn)", sqlConnection);
+            checkSSNValidation.Parameters.AddWithValue("@ssn", SSN);
+            readerSSN = checkSSNValidation.ExecuteReader();
+        }
+
         #endregion
 
 
