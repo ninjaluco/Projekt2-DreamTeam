@@ -458,6 +458,45 @@ namespace SqlLibrary
         #region
 
         
+        public bool VarukorgsRegistrering (int AID, int pris, int q, int KID, int OID)
+        {
+            SqlCommand sqlCommand = new SqlCommand(); //Skapa alltid i varje ny metod
+            sqlCommand.CommandText = "RegisterArtikelVarukorg";
+            sqlCommand.CommandType = CommandType.StoredProcedure; //Sparat i Managment studio
+            sqlCommand.Connection = sqlConnection;
+
+
+            sqlCommand.Parameters.Add(CreateIntParam("@AID", AID));
+            sqlCommand.Parameters.Add(CreateIntParam("@pris", pris));
+            sqlCommand.Parameters.Add(CreateIntParam("@q", q));
+            sqlCommand.Parameters.Add(CreateIntParam("@KID", KID));
+            sqlCommand.Parameters.Add(CreateIntParam("@OID", OID));
+            
+
+
+            int rowEffected;
+
+            try
+            {
+                sqlConnection.Open();
+                rowEffected = sqlCommand.ExecuteNonQuery();
+
+            }
+            catch
+            {
+                rowEffected = -1;
+
+            }
+            finally
+            {
+                sqlConnection.Close();
+            }
+            return rowEffected > 0; //true or false is returning
+
+
+        }
+
+
 
         #endregion
 
