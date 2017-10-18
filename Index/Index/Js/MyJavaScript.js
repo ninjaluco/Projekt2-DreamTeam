@@ -22,39 +22,22 @@
 	function LoadAllPennor() {
 		$.getJSON("/Service/Service.aspx?all=1").
 			done(function (artiklar) {
-				$(".container-fluid").empty(); console.log(artiklar);
+				$(".row").empty(); console.log(artiklar);
 
-				for (var i = 0; i < artiklar.length; i++) {
+
+                for (var i = 0; i < artiklar.length; i++) {
 
 					var tableRow =
-						"<span></span>"+
-					"<span class=\"col-md - 2\"> <h3>" + artiklar[i].artikelnamn + "</h3><p " + artiklar[i].pris + "</p><p>&nbsp</p><p>" +
-						"<input type=\"button\" value=\"Delete contact\" /></p>"+
-						"<p><TextBox ID='amountTextBox' type='number' min='1' runat='server' Width='32px'>1</TextBox></p></span>";
+						"<div></div><div class=\"col-md - 3\"> <h4>" + artiklar[i].artikelnamn + "</h4><p " + artiklar[i].pris + "</p><p>&nbsp</p><p>" +
+						"<input type=\"button\" value=\"Köp\" /></p></div>";
 					
 					
-					$(".container-fluid").append(tableRow);
+                    $(".row").append(tableRow);
 
-					//"<div></div>" +
-					//	"<div class=\"col-md - 2\"> <h3>" + artiklar[i].artikelnamn + "</h3><p " + artiklar[i].pris + "</p><p>&nbsp</p><p>" +
-					//	"<input type=\"button\" value=\"Delete contact\" /></p>" +
-					//	"<p><TextBox ID='amountTextBox' type='number' min='1' runat='server' Width='32px'>1</TextBox></p></div>";
-
-					//<Button ID='addButton' runat='server' OnClick='addButton_Click' Text='Lägg till' CommandArgument='2, '
+					
 				}
 			});
-		//$("#Pennor").hide
-		//$(".Häftapparater").hide
-		//$(".Gem").hide
-		//$(".Papper").hide
-		//<div class="container-fluid">
-			
-		//	<div class="row">
-		//		<div class="col-sm-4" style="background-color:lavender;">.col-sm-4</div>
-		//		<div class="col-sm-4" style="background-color:lavenderblush;">.col-sm-4</div>
-		//		<div class="col-sm-4" style="background-color:lavender;">.col-sm-4</div>
-		//	</div>
-		//</div>
+	
 			
 	}
 

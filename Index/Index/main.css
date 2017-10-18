@@ -20,13 +20,6 @@
     background-size: 100%;
 }
 .row {
-	justify-content: space-between;
-	background-color: green;
-
-	margin-left: 100px;
-	width: 300px;
-	
-}
-.container-fluid {
-	display: flex !important;
+    float: left;
+    margin-left:100px;
 }
