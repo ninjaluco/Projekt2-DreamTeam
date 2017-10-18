@@ -41,31 +41,62 @@ namespace Index
 
 		protected void LogIn(object sender, EventArgs e)
 		{
-			SqlConnection sqlConnection = new SqlConnection();
+			bool invalidNick = true;
+			bool invalidPass = true;
 			string user = textBoxUser.Text;
 			string password = textBoxLösen.Text;
-			klassBibliotek.ReadAllContacts();
-			//ReadAllCon(user);
-
-			SqlCommand checkNameValidation = new SqlCommand("SELECT * FROM Kunder WHERE ([NickName] = @nick)", sqlConnection);
-			checkNameValidation.Parameters.AddWithValue("@nick", user);
-
-			SqlCommand checkNameValidation1 = new SqlCommand("SELECT * FROM Kunder WHERE ([passWord] = @pass)", sqlConnection);
-			checkNameValidation1.Parameters.AddWithValue("@pass", password);
-
-			//if ((textBoxUser.Text.ToUpper() == "KIM") &&
-			//   (textBoxLösen.Text.ToUpper() == "KIM"))
-
-			if (checkNameValidation == checkNameValidation1)
+			SqlConnection sqlConnection = new SqlConnection(KlassBibliotek.connString);
+			try
 			{
-				Response.Redirect("LogOn.aspx");
+				sqlConnection.Open();
+				SqlCommand sqlCommand = new SqlCommand($"SELECT * FROM Kunder WHERE [NickName] = '{user}'", sqlConnection);
+				sqlCommand.Connection = sqlConnection;
+				SqlDataReader sqlDataReader = sqlCommand.ExecuteReader();
+				while (sqlDataReader.Read())
+				{
+					string index = sqlDataReader["NickName"].ToString();
+					if (user == index)
+					{
 
+						SqlConnection sqlConnection2 = new SqlConnection(KlassBibliotek.connString);
+						sqlConnection2.Open();
+						SqlCommand sqlCommand2 = new SqlCommand($"SELECT * FROM Kunder WHERE [NickName] = '{user}' and [passWord] = '{password}'", sqlConnection2);
+						sqlCommand2.Connection = sqlConnection2;
+						SqlDataReader sqlDataReader2 = sqlCommand2.ExecuteReader();
+						invalidNick = false;
+						while (sqlDataReader2.Read())
+						{
+							string pass = sqlDataReader2["Password"].ToString();
+							if (password == pass)
+							{
+								invalidPass = false;
+								Response.Redirect("/LogOn.aspx");
+							}
+						}
+						sqlConnection2.Close();
+						if (invalidPass)
+							Response.Redirect("/Index_1.aspx");
+					}
+					else
+					{
+						Response.Redirect("/Index_1.aspx");
+					}
+				}
 			}
-			else
+			catch (Exception ex)
 			{
-				Response.Redirect("Gem.aspx");
-
+				throw ex;
 			}
+			finally
+			{
+				sqlConnection.Close();
+			}
+
+			if (invalidNick)
+				Response.Redirect("/Index_1.aspx");
+			//Skicka till register user page
+
+
 
 		}
 
