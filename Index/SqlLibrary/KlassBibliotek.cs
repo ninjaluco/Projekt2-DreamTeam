@@ -39,6 +39,8 @@ namespace SqlLibrary
             sqlCommand.CommandType = CommandType.StoredProcedure; //Sparat i Managment studio
             sqlCommand.Connection = sqlConnection;
 
+
+
             sqlCommand.Parameters.Add(CreateVarcharParameter("@name", name));
             sqlCommand.Parameters.Add(CreateVarcharParameter("@nick", nickName));
             sqlCommand.Parameters.Add(CreateVarcharParameter("@pass", passWord));
@@ -48,19 +50,33 @@ namespace SqlLibrary
             sqlCommand.Parameters.Add(CreateVarcharParameter("@city", City));
             sqlCommand.Parameters.Add(CreateVarcharParameter("@zip", Zip));
             sqlCommand.Parameters.Add(CreateVarcharParameter("@ssn", SSN));
-            
+
+            //bool nameChecker;
+            //SqlCommand checkNameValidation = new SqlCommand("SELECT * FROM Kunder WHERE ([NickName] = @nick)", sqlConnection);
+            //checkNameValidation.Parameters.AddWithValue("@nick",nickName);
+            //SqlDataReader reader = checkNameValidation.ExecuteReader();
+
+            //if (reader.HasRows)
+            //{
+            //    nameChecker = false;
+            //}
+            //else
+            //{
+            //    nameChecker = true;
+            //}
+
+
+
             int rowEffected;
 
             try
             {
                 sqlConnection.Open();
                 rowEffected = sqlCommand.ExecuteNonQuery();
-
             }
             catch
             {
                 rowEffected = -1;
-
             }
             finally
             {
@@ -195,21 +211,21 @@ namespace SqlLibrary
 
         //=========================================================================================
         //=========================================================================================
-        //====================      REGISTRERING AV VAROR      ====================================
+        //====================      REGISTRERING AV Artiklar      =================================
         //=========================================================================================
         //=========================================================================================  
         #region
 
         //=========================================================================================
         //==========ARTIKEL REGISTRERING===========================================================
-        public bool ArtikelRegistrering(int AID, string artikelnamn, int pris, string kategori)
+        public bool ArtikelRegistrering(/*int AID,*/ string artikelnamn, int pris, string kategori)
         {
             SqlCommand sqlCommand = new SqlCommand(); //Skapa alltid i varje ny metod
             sqlCommand.CommandText = "RegisterArtikel";
             sqlCommand.CommandType = CommandType.StoredProcedure; //Sparat i Managment studio
             sqlCommand.Connection = sqlConnection;
 
-            sqlCommand.Parameters.Add(CreateIntParam("@AID", AID));
+            //sqlCommand.Parameters.Add(CreateIntParam("@AID", AID));
             sqlCommand.Parameters.Add(CreateVarcharParameter("@artikelNamn", artikelnamn));
             sqlCommand.Parameters.Add(CreateIntParam("@pris", pris));
             sqlCommand.Parameters.Add(CreateVarcharParameter("@kategori", kategori));
@@ -244,7 +260,7 @@ namespace SqlLibrary
         {
             List<Artiklar> artiklar = new List<Artiklar>();
             SqlCommand sqlCommandArt = new SqlCommand(); //Skapa alltid i varje ny metod
-            sqlCommandArt.CommandText = "select * from RegisterArtikel";
+            sqlCommandArt.CommandText = "select * from Artiklar";
             sqlCommandArt.CommandType = CommandType.Text; //Sparat i Managment studio
             sqlCommandArt.Connection = sqlConnection;
 
@@ -286,7 +302,7 @@ namespace SqlLibrary
 
            
             sqlCommand.Parameters.Add(CreateIntParam("@AID", AID));
-            sqlCommand.Parameters.Add(CreateVarcharParameter("@artikelnamn", artikelnamn));
+            sqlCommand.Parameters.Add(CreateVarcharParameter("@artikelNamn", artikelnamn));
             sqlCommand.Parameters.Add(CreateIntParam("@pris", pris));
             sqlCommand.Parameters.Add(CreateVarcharParameter("@kategori", kategori));
            
@@ -319,7 +335,7 @@ namespace SqlLibrary
             deleteArtikel.CommandText = "DeleteArtikel";
             deleteArtikel.CommandType = CommandType.StoredProcedure; //Sparat i Managment studio
             deleteArtikel.Connection = sqlConnection;
-            SqlParameter idParam = CreateIntParam("@ArtikelID", AID);
+            SqlParameter idParam = CreateIntParam("@AID", AID);
             deleteArtikel.Parameters.Add(idParam);
             int rowEffected;
 
@@ -341,8 +357,126 @@ namespace SqlLibrary
             return rowEffected > 0; //true or false is returning
         }
         //=========================================================================================
-        #endregion 
+        #endregion
 
+        //=========================================================================================
+        //=========================================================================================
+        //====================      REGISTRERING AV ORDRAR      ===================================
+        //=========================================================================================
+        //========================================================================================= 
+        //NEEDS TO BE MORE MODIFIED!!!!
+        #region
+
+        //=========================================================================================
+        //==========ORDER AVLÄSNING================================================================
+
+        public bool OrderRegistrering(int OID, int KID, int VID)
+        {
+            SqlCommand sqlCommand = new SqlCommand(); //Skapa alltid i varje ny metod
+            sqlCommand.CommandText = "Order";
+            sqlCommand.CommandType = CommandType.StoredProcedure; //Sparat i Managment studio
+            sqlCommand.Connection = sqlConnection;
+
+            
+            sqlCommand.Parameters.Add(CreateIntParam("@OrderID", OID));
+            sqlCommand.Parameters.Add(CreateIntParam("@KundID", KID));
+            sqlCommand.Parameters.Add(CreateIntParam("@VarukorgID", VID));
+
+
+            int rowEffected;
+
+            try
+            {
+                sqlConnection.Open();
+                rowEffected = sqlCommand.ExecuteNonQuery();
+
+            }
+            catch
+            {
+                rowEffected = -1;
+
+            }
+            finally
+            {
+                sqlConnection.Close();
+            }
+            return rowEffected > 0; //true or false is returning
+
+
+        }
+
+        //=========================================================================================
+        //==========KUND AVLÄSNING=================================================================
+
+        public List<Order> ReadAllOrders()
+        {
+            List<Order> Ordrar = new List<Order>();
+            SqlCommand sqlCommandArt = new SqlCommand(); //Skapa alltid i varje ny metod
+            sqlCommandArt.CommandText = "select * from Artiklar";
+            sqlCommandArt.CommandType = CommandType.Text; //Sparat i Managment studio
+            sqlCommandArt.Connection = sqlConnection;
+
+            try
+            {
+                sqlConnection.Open();
+                SqlDataReader reader = sqlCommandArt.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    Order order = new Order();
+                    order.OID = (int)reader["OrderID"];
+                    order.KID = (int)reader["KundID"];
+                    order.VID = (int)reader["VarukorgID"];
+
+                    Ordrar.Add(order);
+                }
+
+            }
+            catch
+            {
+                Ordrar = null;
+            }
+            finally
+            {
+                sqlConnection.Close();
+            }
+            return Ordrar;
+        }
+
+        //=========================================================================================
+        //==========ARTIKEL RADERING===============================================================
+
+        public bool TaBortOrder(int OID)
+        {
+            SqlCommand Ordrar = new SqlCommand(); //Skapa alltid i varje ny metod
+            Ordrar.CommandText = "OrderDelete";
+            Ordrar.CommandType = CommandType.StoredProcedure; //Sparat i Managment studio
+            Ordrar.Connection = sqlConnection;
+            SqlParameter idParam = CreateIntParam("@OID", OID);
+            Ordrar.Parameters.Add(idParam);
+            int rowEffected;
+
+            try
+            {
+                sqlConnection.Open();
+                rowEffected = Ordrar.ExecuteNonQuery();
+
+            }
+            catch
+            {
+                rowEffected = -1;
+
+            }
+            finally
+            {
+                sqlConnection.Close();
+            }
+            return rowEffected > 0; //true or false is returning
+        }
+
+
+
+        #endregion
         //=========================================================================================
         //=========================================================================================
         //====================      HELPING METHODS      ==========================================
