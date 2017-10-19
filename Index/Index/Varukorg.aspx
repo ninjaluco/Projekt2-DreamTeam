@@ -6,15 +6,20 @@
 		.auto-style2 {
 			height: 216px;
 		}
-		body{
-			background-color:white;
-			background-image:none;
-		}
+	
+		.bild {
+    background-image: url('Bilder/10798171-Some-Office-Stuff-Hand-Drawn-Stock-Vector-doodle.jpg');
+    
+}
 	</style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 
-   <div class="auto-style2">
+   <div class="varuKorgDiv">
+
+
+        
+
 
 	   <asp:Table ID="shoppingCartTable" runat="server"
 		   CellPadding="10"
@@ -47,25 +52,20 @@
 				  
 			   </asp:TableHeaderCell>
 			   <asp:TableHeaderCell>
- 
+ Totalsumma:
 				   </asp:TableHeaderCell>
 			   <asp:TableHeaderCell ID="sumOfAll" CssClass="sumOfAll">
-				Totalsumma:
+				
 			   </asp:TableHeaderCell>
 		   </asp:TableHeaderRow>
 	   </asp:Table>
-	   
-
-	</div>
-    <div>
-
-
-        <asp:Button ID="buttonBuy" runat="server" OnClick="buttonBuy_Click" Text="Skicka Order" />
+       <div id="buyStuff">
+	   <asp:Button ID="buttonBuy" runat="server" OnClick="buttonBuy_Click" Text="Skicka Order" />
 
 
         <asp:Label ID="buyLoggedInLabel" runat="server" ForeColor="Red"></asp:Label>
-
-
-    </div>
-
+       </div>
+	</div>
+       <div class="bild"> <img src="Bilder/10798171-Some-Office-Stuff-Hand-Drawn-Stock-Vector-doodle.jpg" />
+</div>  
 </asp:Content>

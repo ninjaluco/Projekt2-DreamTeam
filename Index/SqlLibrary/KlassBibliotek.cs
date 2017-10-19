@@ -20,7 +20,7 @@ namespace SqlLibrary
     {
         // INSERT THE CONNECTION STRING FROM THE DATABASE!
         public static string connString = @"Data Source=.;Initial Catalog=JoakimVonAnka;Integrated Security=True";
-      
+
 
         SqlConnection sqlConnection = new SqlConnection(connString);
 
@@ -35,12 +35,8 @@ namespace SqlLibrary
         public bool KundRegistrering(string name, string nickName, string passWord, string telefon,
             string eMail, string Street, string City, string Zip, string SSN)
         {
-            SqlCommand sqlCommand = new SqlCommand(); //Skapa alltid i varje ny metod
-            sqlCommand.CommandText = "RegisterUser";
+            SqlCommand sqlCommand = new SqlCommand("RegisterUser", sqlConnection); //Skapa alltid i varje ny metod                  
             sqlCommand.CommandType = CommandType.StoredProcedure; //Sparat i Managment studio
-            sqlCommand.Connection = sqlConnection;
-
-
 
             sqlCommand.Parameters.Add(CreateVarcharParameter("@name", name));
             sqlCommand.Parameters.Add(CreateVarcharParameter("@nick", nickName));
@@ -52,14 +48,14 @@ namespace SqlLibrary
             sqlCommand.Parameters.Add(CreateVarcharParameter("@zip", Zip));
             sqlCommand.Parameters.Add(CreateVarcharParameter("@ssn", SSN));
 
-            SqlDataReader readerNick, readerSSN;
-            NameAndSsnChecker(nickName, SSN, out readerNick, out readerSSN);
 
+            bool nickCool = NickCheck(nickName);
+            bool SSNCool = SSNCheck(SSN);
             bool rowEffected;
-
-            if (readerNick.HasRows || readerSSN.HasRows || nickName.ToLower() == "admin")
+            //bool nickCool = true;
+            //bool SSNCool = true;
+            if (nickCool == false || SSNCool == false || nickName.ToLower() == "admin")
             {
-
 
                 return rowEffected = false;
             }
@@ -82,9 +78,9 @@ namespace SqlLibrary
                 return rowEffected; //true or false is returning
 
             }
-            
+
         }
-        
+
 
         //=========================================================================================
         //==========KUND AVLÄSNING=================================================================
@@ -231,9 +227,7 @@ namespace SqlLibrary
             sqlCommand.Parameters.Add(CreateIntParam("@pris", pris));
             sqlCommand.Parameters.Add(CreateVarcharParameter("@kategori", kategori));
 
-
             int rowEffected;
-
             try
             {
                 sqlConnection.Open();
@@ -366,7 +360,7 @@ namespace SqlLibrary
         //====================      REGISTRERING AV ORDRAR      ===================================
         //=========================================================================================
         //========================================================================================= 
-        
+
         #region
 
         //=========================================================================================
@@ -434,7 +428,7 @@ namespace SqlLibrary
                     Order order = new Order();
                     order.OID = (int)reader["OrderID"];
                     order.KID = (int)reader["KundID"];
-                    
+
 
                     Ordrar.Add(order);
                 }
@@ -463,8 +457,8 @@ namespace SqlLibrary
         //========================================================================================= 
         #region
 
-        
-        public bool VarukorgsRegistrering (int AID, int pris, int q, int KID, int OID)
+
+        public bool VarukorgsRegistrering(int AID, int pris, int q, int KID, int OID)
         {
             SqlCommand sqlCommand = new SqlCommand(); //Skapa alltid i varje ny metod
             sqlCommand.CommandText = "RegisterArtikelVarukorg";
@@ -477,7 +471,7 @@ namespace SqlLibrary
             sqlCommand.Parameters.Add(CreateIntParam("@q", q));
             sqlCommand.Parameters.Add(CreateIntParam("@KID", KID));
             sqlCommand.Parameters.Add(CreateIntParam("@OID", OID));
-            
+
 
 
             int rowEffected;
@@ -540,14 +534,39 @@ namespace SqlLibrary
         //=========================================================================================
         //========CHECK USERNAME AND SSN ==========================================================
 
-        private void NameAndSsnChecker(string nickName, string SSN, out SqlDataReader readerNick, out SqlDataReader readerSSN)
+        private bool NickCheck(string nickName)
         {
-            SqlCommand checkNameValidation = new SqlCommand("SELECT * FROM Kunder WHERE ([NickName] = @nick)", sqlConnection);
-            checkNameValidation.Parameters.AddWithValue("@nick", nickName);
-            readerNick = checkNameValidation.ExecuteReader();
-            SqlCommand checkSSNValidation = new SqlCommand("SELECT * FROM Kunder WHERE ([SSN] = @ssn)", sqlConnection);
-            checkSSNValidation.Parameters.AddWithValue("@ssn", SSN);
-            readerSSN = checkSSNValidation.ExecuteReader();
+            bool readerNick = false;
+            SqlConnection sqlConnection = new SqlConnection(connString);
+            sqlConnection.Open();
+            SqlCommand sqlCommand = new SqlCommand($"SELECT * FROM Kunder WHERE [NickName] = '{nickName}'", sqlConnection);
+            sqlCommand.Connection = sqlConnection;
+            SqlDataReader sqlDataReader = sqlCommand.ExecuteReader();
+
+            if (sqlDataReader.HasRows == false)
+            {
+                readerNick = true;
+            }
+
+            sqlConnection.Close();
+            return readerNick;
+        }
+        private bool SSNCheck(string SSN)
+        {
+            bool readerSSN = false;
+            SqlConnection sqlConnection2 = new SqlConnection(connString);
+            sqlConnection2.Open();
+            SqlCommand sqlCommand2 = new SqlCommand($"SELECT * FROM Kunder WHERE [SSN] = '{SSN}'", sqlConnection);            
+            sqlCommand2.Connection = sqlConnection2;
+            SqlDataReader sqlDataReader2 = sqlCommand2.ExecuteReader();
+
+            if (sqlDataReader2.HasRows == false)
+            {
+                readerSSN = true;
+            }
+
+            sqlConnection2.Close();
+            return readerSSN;
         }
 
         #endregion

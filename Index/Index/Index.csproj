@@ -82,6 +82,7 @@
     <Content Include="Main.Master" />
     <None Include="packages.config" />
     <Content Include="main.css" />
+    <Content Include="OrderPlaced.aspx" />
     <Content Include="Papper.aspx" />
     <Content Include="Pennor.aspx" />
     <Content Include="RegisterUser.aspx" />
@@ -166,6 +167,13 @@
     </Compile>
     <Compile Include="Main.Master.designer.cs">
       <DependentUpon>Main.Master</DependentUpon>
+    </Compile>
+    <Compile Include="OrderPlaced.aspx.cs">
+      <DependentUpon>OrderPlaced.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="OrderPlaced.aspx.designer.cs">
+      <DependentUpon>OrderPlaced.aspx</DependentUpon>
     </Compile>
     <Compile Include="Papper.aspx.cs">
       <DependentUpon>Papper.aspx</DependentUpon>
