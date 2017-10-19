@@ -48,6 +48,9 @@
       <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.5\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.10.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -66,6 +69,7 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Admin.aspx" />
     <Content Include="Bilder\10798171-Some-Office-Stuff-Hand-Drawn-Stock-Vector-doodle.jpg" />
     <Content Include="Bilder\5000272_301_220.jpg" />
     <Content Include="Bilder\pappernfokus.jpg" />
@@ -111,10 +115,19 @@
     <Content Include="Scripts\jquery-1.9.1.min.js" />
     <Content Include="Scripts\jquery.cookie-1.4.1.min.js" />
     <Content Include="Scripts\jquery.cookie.js" />
+    <Content Include="Service\Service.aspx" />
+    <Content Include="UserProfile.aspx" />
     <Content Include="Varukorg.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Admin.aspx.cs">
+      <DependentUpon>Admin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin.aspx.designer.cs">
+      <DependentUpon>Admin.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Gem.aspx.cs">
       <DependentUpon>Gem.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -168,6 +181,20 @@
       <DependentUpon>Pennor.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Service\Service.aspx.cs">
+      <DependentUpon>Service.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Service\Service.aspx.designer.cs">
+      <DependentUpon>Service.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UserProfile.aspx.cs">
+      <DependentUpon>UserProfile.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UserProfile.aspx.designer.cs">
+      <DependentUpon>UserProfile.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Varukorg.aspx.cs">
       <DependentUpon>Varukorg.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

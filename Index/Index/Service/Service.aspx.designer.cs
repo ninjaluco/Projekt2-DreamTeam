@@ -10,18 +10,15 @@
 namespace Index {
     
     
-    public partial class Pennor {
+    public partial class Service {
         
         /// <summary>
-        /// Master property.
+        /// jsonLiteral control.
         /// </summary>
         /// <remarks>
-        /// Auto-generated property.
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        public new Index.Main Master {
-            get {
-                return ((Index.Main)(base.Master));
-            }
-        }
+        protected global::System.Web.UI.WebControls.Literal jsonLiteral;
     }
 }

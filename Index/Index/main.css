@@ -18,4 +18,8 @@
     background: url('Bilder/10798171-Some-Office-Stuff-Hand-Drawn-Stock-Vector-doodle.jpg') no-repeat;
     background-attachment: fixed;
     background-size: 100%;
-} 
+}
+.row {
+    float: left;
+    margin-left:100px;
+}

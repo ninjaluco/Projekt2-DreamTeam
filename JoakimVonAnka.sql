@@ -195,9 +195,50 @@ update [Order] set [PrisOrder]=@total
 END
 
 GO
+								--===ARTIKLAR==--
+								insert into Artiklar ([ArtikelNamn], [Pris], [Kategori]) values(		'	Blyertspenna	'	,	10	,	'	Pennor	'	)
+insert into Artiklar ([ArtikelNamn], [Pris], [Kategori]) values(		'	Bläckpenna	'	,	15	,	'	Pennor	'	)
+insert into Artiklar ([ArtikelNamn], [Pris], [Kategori]) values(		'	Kulspetspenna	'	,	15	,	'	Pennor	'	)
+insert into Artiklar ([ArtikelNamn], [Pris], [Kategori]) values(		'	Markeringspenna	'	,	10	,	'	Pennor	'	)
+insert into Artiklar ([ArtikelNamn], [Pris], [Kategori]) values(		'	Skrivarpapper A4	'	,	500	,	'	Papper	'	)
+insert into Artiklar ([ArtikelNamn], [Pris], [Kategori]) values(		'	Skrivarpapper A3	'	,	700	,	'	Papper	'	)
+insert into Artiklar ([ArtikelNamn], [Pris], [Kategori]) values(		'	Skrivarpapper A4 hålat	'	,	500	,	'	Papper	'	)
+insert into Artiklar ([ArtikelNamn], [Pris], [Kategori]) values(		'	Skrivarpapper A4 pearl-white	'	,	600	,	'	Papper	'	)
+insert into Artiklar ([ArtikelNamn], [Pris], [Kategori]) values(		'	Skrivarpapper A4 off-white	'	,	600	,	'	Papper	'	)
+insert into Artiklar ([ArtikelNamn], [Pris], [Kategori]) values(		'	Skrivarpapper A4 pearl-white hålat	'	,	600	,	'	Papper	'	)
+insert into Artiklar ([ArtikelNamn], [Pris], [Kategori]) values(		'	Skrivarpapper A4 off-white hålat	'	,	600	,	'	Papper	'	)
+insert into Artiklar ([ArtikelNamn], [Pris], [Kategori]) values(		'	Skrivarpapper A4 rutigt	'	,	500	,	'	Papper	'	)
+insert into Artiklar ([ArtikelNamn], [Pris], [Kategori]) values(		'	Papper A5	'	,	250	,	'	Papper	'	)
+insert into Artiklar ([ArtikelNamn], [Pris], [Kategori]) values(		'	Papper A3	'	,	250	,	'	Papper	'	)
+insert into Artiklar ([ArtikelNamn], [Pris], [Kategori]) values(		'	Papper A4	'	,	150	,	'	Papper	'	)
+insert into Artiklar ([ArtikelNamn], [Pris], [Kategori]) values(		'	Skrivarpapper A4 återvunnet	'	,	450	,	'	Papper	'	)
+insert into Artiklar ([ArtikelNamn], [Pris], [Kategori]) values(		'	Skrivarpapper A3 återvunnet	'	,	600	,	'	Papper	'	)
+insert into Artiklar ([ArtikelNamn], [Pris], [Kategori]) values(		'	Skrivarpapper A4 hålat återvunnet	'	,	450	,	'	Papper	'	)
+insert into Artiklar ([ArtikelNamn], [Pris], [Kategori]) values(		'	Skrivarpapper A4 pearl-white återvunnet	'	,	550	,	'	Papper	'	)
+insert into Artiklar ([ArtikelNamn], [Pris], [Kategori]) values(		'	Skrivarpapper A4 off-white återvunnet	'	,	550	,	'	Papper	'	)
+insert into Artiklar ([ArtikelNamn], [Pris], [Kategori]) values(		'	Skrivarpapper A4 pearl-white hålat återvunnet	'	,	550	,	'	Papper	'	)
+insert into Artiklar ([ArtikelNamn], [Pris], [Kategori]) values(		'	Skrivarpapper A4 off-white hålat återvunnet	'	,	550	,	'	Papper	'	)
+insert into Artiklar ([ArtikelNamn], [Pris], [Kategori]) values(		'	Skrivarpapper A4 rutigt återvunnet	'	,	450	,	'	Papper	'	)
+insert into Artiklar ([ArtikelNamn], [Pris], [Kategori]) values(		'	Papper A5 återvunnet	'	,	200	,	'	Papper	'	)
+insert into Artiklar ([ArtikelNamn], [Pris], [Kategori]) values(		'	Papper A3 återvunnet	'	,	200	,	'	Papper	'	)
+insert into Artiklar ([ArtikelNamn], [Pris], [Kategori]) values(		'	Papper A4 återvunnet	'	,	125	,	'	Papper	'	)
+insert into Artiklar ([ArtikelNamn], [Pris], [Kategori]) values(		'	Häftapparat Klassisk	'	,	350	,	'	Häftapparater	'	)
+insert into Artiklar ([ArtikelNamn], [Pris], [Kategori]) values(		'	Häftapparat Modern	'	,	500	,	'	Häftapparater	'	)
+insert into Artiklar ([ArtikelNamn], [Pris], [Kategori]) values(		'	Häftapparat Automatisk	'	,	750	,	'	Häftapparater	'	)
+insert into Artiklar ([ArtikelNamn], [Pris], [Kategori]) values(		'	Häftapparat Häftig	'	,	1337	,	'	Häftapparater	'	)
+insert into Artiklar ([ArtikelNamn], [Pris], [Kategori]) values(		'	Häftapparat Stor	'	,	1000	,	'	Häftapparater	'	)
+insert into Artiklar ([ArtikelNamn], [Pris], [Kategori]) values(		'	Häftapparat Liten	'	,	350	,	'	Häftapparater	'	)
+insert into Artiklar ([ArtikelNamn], [Pris], [Kategori]) values(		'	10-Pack Small	'	,	10	,	'	Gem	'	)
+insert into Artiklar ([ArtikelNamn], [Pris], [Kategori]) values(		'	10-Pack Medium	'	,	10	,	'	Gem	'	)
+insert into Artiklar ([ArtikelNamn], [Pris], [Kategori]) values(		'	10-Pack Large	'	,	10	,	'	Gem	'	)
+insert into Artiklar ([ArtikelNamn], [Pris], [Kategori]) values(		'	50-Pack Small	'	,	50	,	'	Gem	'	)
+insert into Artiklar ([ArtikelNamn], [Pris], [Kategori]) values(		'	50-Pack Medium	'	,	50	,	'	Gem	'	)
+insert into Artiklar ([ArtikelNamn], [Pris], [Kategori]) values(		'	50-Pack Large	'	,	50	,	'	Gem	'	)
+insert into Artiklar ([ArtikelNamn], [Pris], [Kategori]) values(		'	100-Pack Small	'	,	100	,	'	Gem	'	)
+insert into Artiklar ([ArtikelNamn], [Pris], [Kategori]) values(		'	100-Pack Medium	'	,	100	,	'	Gem	'	)
+insert into Artiklar ([ArtikelNamn], [Pris], [Kategori]) values(		'	100-Pack Large	'	,	100	,	'	Gem	'	)
 
-
-
+SELECT * FROM ARTIKLAR
 											--===TEST AREA===--
 	--====KUNDER====--
 	 --==REGISTER==--
