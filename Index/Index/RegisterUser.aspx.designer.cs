@@ -22,6 +22,15 @@ namespace Index {
         protected global::System.Web.UI.WebControls.TextBox NickName;
         
         /// <summary>
+        /// RequiredFieldValidatorNick control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidatorNick;
+        
+        /// <summary>
         /// Password control.
         /// </summary>
         /// <remarks>
@@ -29,6 +38,15 @@ namespace Index {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox Password;
+        
+        /// <summary>
+        /// RequiredFieldValidatorPassword control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidatorPassword;
         
         /// <summary>
         /// Name control.
@@ -40,6 +58,15 @@ namespace Index {
         protected global::System.Web.UI.WebControls.TextBox Name;
         
         /// <summary>
+        /// RequiredFieldValidatorName control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidatorName;
+        
+        /// <summary>
         /// Street control.
         /// </summary>
         /// <remarks>
@@ -47,6 +74,15 @@ namespace Index {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox Street;
+        
+        /// <summary>
+        /// RequiredFieldValidatorStreet control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidatorStreet;
         
         /// <summary>
         /// Zip control.
@@ -58,6 +94,15 @@ namespace Index {
         protected global::System.Web.UI.WebControls.TextBox Zip;
         
         /// <summary>
+        /// RequiredFieldValidatorZip control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidatorZip;
+        
+        /// <summary>
         /// City control.
         /// </summary>
         /// <remarks>
@@ -65,6 +110,15 @@ namespace Index {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox City;
+        
+        /// <summary>
+        /// RequiredFieldValidatorCity control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidatorCity;
         
         /// <summary>
         /// SSN control.
@@ -76,6 +130,15 @@ namespace Index {
         protected global::System.Web.UI.WebControls.TextBox SSN;
         
         /// <summary>
+        /// RequiredFieldValidatorSSN control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidatorSSN;
+        
+        /// <summary>
         /// Telefon control.
         /// </summary>
         /// <remarks>
@@ -85,6 +148,15 @@ namespace Index {
         protected global::System.Web.UI.WebControls.TextBox Telefon;
         
         /// <summary>
+        /// RequiredFieldValidatorTelefon control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidatorTelefon;
+        
+        /// <summary>
         /// Epost control.
         /// </summary>
         /// <remarks>
@@ -92,6 +164,15 @@ namespace Index {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox Epost;
+        
+        /// <summary>
+        /// RequiredFieldValidatorEpost control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidatorEpost;
         
         /// <summary>
         /// ButtonReg control.
