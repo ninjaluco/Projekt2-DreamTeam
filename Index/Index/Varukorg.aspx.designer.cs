@@ -38,5 +38,17 @@ namespace Index {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button buttonBuy;
+        
+        /// <summary>
+        /// Master property.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated property.
+        /// </remarks>
+        public new Index.Main Master {
+            get {
+                return ((Index.Main)(base.Master));
+            }
+        }
     }
 }
