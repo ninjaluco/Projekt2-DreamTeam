@@ -83,10 +83,10 @@ namespace Index
                         if (invalidPass)
                             Response.Redirect("/Index_1.aspx");
                     }
-                    else
-                    {
-                        Response.Redirect("/Index_1.aspx");
-                    }
+                    //else
+                    //{
+                    //    Response.Redirect("/Index_1.aspx");
+                    //}
                 }
             }
             catch (Exception ex)

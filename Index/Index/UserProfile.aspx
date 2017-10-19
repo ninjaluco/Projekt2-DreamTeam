@@ -10,8 +10,13 @@
     <div>
         <p></p>
     </div>
-    <asp:TextBox ID="historikText" runat="server"></asp:TextBox>
+
+    <div><p>Order</p>
+        <asp:ListBox ID="historikText" runat="server" Height="281px" OnSelectedIndexChanged="historikText_SelectedIndexChanged" Width="261px"></asp:ListBox>
+        <asp:TextBox ID="textBoxOrderInfo" runat="server"></asp:TextBox>
+    </div>
+
     <asp:TextBox ID="OrderNummer" runat="server"></asp:TextBox>
 
-    <div><p>Avsluta ditt användarkonto</p><asp:Button ID="KundDelete" runat="server" Text="Avregistrering" /></div>
+    <div><p>Avsluta ditt användarkonto</p><asp:Button ID="KundDelete" runat="server" Text="Avregistrering" OnClick="KundDelete_Click" /></div>
 </asp:Content>

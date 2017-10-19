@@ -414,7 +414,7 @@ namespace SqlLibrary
         {
             List<Order> Ordrar = new List<Order>();
             SqlCommand sqlCommandArt = new SqlCommand(); //Skapa alltid i varje ny metod
-            sqlCommandArt.CommandText = "select * from Artiklar";
+            sqlCommandArt.CommandText = "select * from [Order]";
             sqlCommandArt.CommandType = CommandType.Text; //Sparat i Managment studio
             sqlCommandArt.Connection = sqlConnection;
 
