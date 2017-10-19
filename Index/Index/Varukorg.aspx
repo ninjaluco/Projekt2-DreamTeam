@@ -4,6 +4,10 @@
 		.auto-style2 {
 			height: 216px;
 		}
+		body{
+			background-color:white;
+			background-image:none;
+		}
 	</style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
