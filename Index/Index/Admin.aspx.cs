@@ -14,11 +14,31 @@ namespace Index
 
 		}
 
+		protected void addButton_Click(object sender, EventArgs e)
+		{
+				int amount = int.Parse(amountTextBox.Text);
+				this.Master.buttonBuyThings_Click(sender, e, amount);
+		}
+
+		protected void Button2_Click(object sender, EventArgs e)
+		{
+			int amount = int.Parse(amountTextBox.Text);
+			this.Master.buttonBuyThings_Click(sender, e, amount);
+		}
+
+		protected void Button3_Click(object sender, EventArgs e)
+		{
+			int amount = int.Parse(amountTextBox.Text);
+			this.Master.buttonBuyThings_Click(sender, e, amount);
+		}
+
 		protected void Button1_Click(object sender, EventArgs e)
 		{
-			
-
+			int amount = int.Parse(amountTextBox.Text);
+			this.Master.buttonBuyThings_Click(sender, e, amount);
 		}
+
+
 		//protected void addButton_Click(object sender, EventArgs e)
 		//{
 		//	int amount = int.Parse(amountTextBox.Text);
