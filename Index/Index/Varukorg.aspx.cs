@@ -27,6 +27,10 @@ namespace Index
 
                 cookieData = cookieData.Replace("%2C", ",");
 
+                Response.Cookies["shoppingCart"].Value = cookieData;
+                Response.Cookies["shoppingCart"].Expires = DateTime.Now.AddDays(1);
+               
+
                 string[] data = cookieData.Split(',');
                 KlassBibliotek sqlBibliotek = new KlassBibliotek();
                 List<Artiklar> artikelList = sqlBibliotek.ReadAllArtiklar();
@@ -112,6 +116,10 @@ namespace Index
 
 
             }
+            else
+            {
+                buttonBuy.Visible = false;
+            }
         }
 
         private void ChangeNumberText(object sender, EventArgs e)
@@ -162,12 +170,46 @@ namespace Index
         protected void buttonBuy_Click(object sender, EventArgs e)
         {
 
-            int orderID = 1;
+            
+
+            KlassBibliotek sqlBibliotek = new KlassBibliotek();
 
 
+            int kundID = 123;
+            int orderID = sqlBibliotek.OrderRegistrering(0);
+
+            List<Artiklar> artikelList = sqlBibliotek.ReadAllArtiklar();
+            List<Artiklar> artiklariVarukorgen = new List<Artiklar>();
+            
             string varukorg = Request.Cookies["shoppingCart"].Value;
 
+            if (varukorg != null)
+            {
+                string[] data = varukorg.Split(',');
 
+
+                foreach (var artikel in data)
+                {
+                    if (artikel != "")
+                    {
+                        Artiklar artikelIVarukorgen = artikelList.FirstOrDefault(x => x.AID == int.Parse(artikel));
+                        artiklariVarukorgen.Add(artikelIVarukorgen);
+                    }
+                }
+            }
+
+            IEnumerable<int> unikaArtiklarIVarukorgen = artiklariVarukorgen.Select(x => x.AID).Distinct();
+
+            foreach (var artikelID in unikaArtiklarIVarukorgen)
+            {
+                int antal = artiklariVarukorgen.Where(x => x.AID == artikelID).Count();
+
+                int pris = artiklariVarukorgen.FirstOrDefault(x => x.AID == artikelID).pris;
+
+                sqlBibliotek.VarukorgsRegistrering(artikelID, pris, antal, kundID, orderID);
+            }
+
+            
         }
     }
 }
