@@ -224,6 +224,10 @@ namespace Index
 
                     sqlBibliotek.VarukorgsRegistrering(artikelID, pris, antal, kundID, orderID);
                 }
+                Response.Cookies["shoppingCart"].Value = "";
+                Response.Cookies["shoppingCart"].Expires = DateTime.Now.AddDays(-1d);
+
+                Response.Redirect("/OrderPlaced.aspx?orderID=" + orderID);
             }
             else
             {
