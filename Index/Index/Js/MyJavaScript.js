@@ -151,7 +151,7 @@
     //    KundDelete_Click(){
     //        $('form').attr('action', 'Index_1.aspx');
     //    }
-    }
+    //}
     
 
 

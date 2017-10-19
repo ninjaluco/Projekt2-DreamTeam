@@ -2,6 +2,7 @@
 <%@ MasterType VirtualPath="~/Main.Master" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+    <script src="Js/JSGem.js"></script>
     <style type="text/css">
 		.auto-style2 {
 			height: 216px;
@@ -11,11 +12,12 @@
     background-image: url('Bilder/10798171-Some-Office-Stuff-Hand-Drawn-Stock-Vector-doodle.jpg');
     
 }
+       
 	</style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
    
-	<div class="bild">
+	<%--<div class="bild">
 
 	<p<>Gem</p>
 	<img src="Bilder/thumb.jpg" class="productImage" />
@@ -24,8 +26,11 @@
     </p> &nbsp;
 		
 
-		</div>
-		<div class="bild"> <img src="Bilder/10798171-Some-Office-Stuff-Hand-Drawn-Stock-Vector-doodle.jpg" />
+		</div>--%>
+     <div class="container-fluid">
+        <div class="row"></div>
+    </div>
+		<%--<div class="bild"> <img src="Bilder/10798171-Some-Office-Stuff-Hand-Drawn-Stock-Vector-doodle.jpg" />--%>
 </div>
 		</asp:Content> 
 
