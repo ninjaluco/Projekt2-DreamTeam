@@ -12,7 +12,11 @@ namespace Index
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            LoadShoppingCart();
+            if (!IsPostBack)
+            {
+                LoadShoppingCart();
+            }
+            
 
         }
 
@@ -26,6 +30,10 @@ namespace Index
                 string cookieData = Request.Cookies["shoppingCart"].Value;
 
                 cookieData = cookieData.Replace("%2C", ",");
+
+                Response.Cookies["shoppingCart"].Value = cookieData;
+                Response.Cookies["shoppingCart"].Expires = DateTime.Now.AddDays(1);
+               
 
                 string[] data = cookieData.Split(',');
                 KlassBibliotek sqlBibliotek = new KlassBibliotek();
@@ -112,6 +120,10 @@ namespace Index
 
 
             }
+            else
+            {
+                buttonBuy.Visible = false;
+            }
         }
 
         private void ChangeNumberText(object sender, EventArgs e)
@@ -162,12 +174,66 @@ namespace Index
         protected void buttonBuy_Click(object sender, EventArgs e)
         {
 
-            int orderID = 1;
+            
+
+            KlassBibliotek sqlBibliotek = new KlassBibliotek();
 
 
-            string varukorg = Request.Cookies["shoppingCart"].Value;
+            if (Request.Cookies["loggedInUser"] != null)
+            {
+                int kundID = int.Parse(Request.Cookies["loggedInUser"].Value);
+                int orderID = sqlBibliotek.OrderRegistrering(kundID);
+
+                List<Artiklar> artikelList = sqlBibliotek.ReadAllArtiklar();
+                List<Artiklar> artiklariVarukorgen = new List<Artiklar>();
+
+                string cookieData = Request.Cookies["shoppingCart"].Value;
+
+                
+                cookieData = cookieData.Replace("%2C", ",");
+
+                Response.Cookies["shoppingCart"].Value = cookieData;
+                Response.Cookies["shoppingCart"].Expires = DateTime.Now.AddDays(1);
+
+                if (cookieData != null)
+                {
+                    string[] data = cookieData.Split(',');
 
 
+                    foreach (var artikel in data)
+                    {
+                        if (artikel != "")
+                        {
+                            Artiklar artikelIVarukorgen = artikelList.FirstOrDefault(x => x.AID == int.Parse(artikel));
+                            if (artikelIVarukorgen != null)
+                            {
+                                artiklariVarukorgen.Add(artikelIVarukorgen);
+                            }
+                            
+                        }
+                    }
+                }
+
+                IEnumerable<int> unikaArtiklarIVarukorgen = artiklariVarukorgen.Select(x => x.AID).Distinct();
+
+                foreach (var artikelID in unikaArtiklarIVarukorgen)
+                {
+                    int antal = artiklariVarukorgen.Where(x => x.AID == artikelID).Count();
+
+                    int pris = artiklariVarukorgen.FirstOrDefault(x => x.AID == artikelID).pris;
+
+                    sqlBibliotek.VarukorgsRegistrering(artikelID, pris, antal, kundID, orderID);
+                }
+                Response.Cookies["shoppingCart"].Value = "";
+                Response.Cookies["shoppingCart"].Expires = DateTime.Now.AddDays(-1d);
+
+                Response.Redirect("/OrderPlaced.aspx?orderID=" + orderID);
+            }
+            else
+            {
+                buyLoggedInLabel.Text = "Du måste logga in först!";
+            }
+            
         }
     }
 }

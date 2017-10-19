@@ -267,7 +267,7 @@ namespace SqlLibrary
                 while (reader.Read())
                 {
                     Artiklar artikel = new Artiklar();
-                    artikel.AID = (int)reader["ArtikelId"];
+                    artikel.AID = int.Parse(reader["ArtikelID"].ToString());
                     artikel.artikelnamn = (string)reader["artikelnamn"];
                     artikel.pris = (int)reader["pris"];
                     artikel.kategori = (string)reader["kategori"];
@@ -297,7 +297,7 @@ namespace SqlLibrary
             sqlCommand.Connection = sqlConnection;
 
 
-            sqlCommand.Parameters.Add(CreateIntParam("@AID", AID));
+            sqlCommand.Parameters.Add(CreateIntParam("@AID",AID ));
             sqlCommand.Parameters.Add(CreateVarcharParameter("@artikelNamn", artikelnamn));
             sqlCommand.Parameters.Add(CreateIntParam("@pris", pris));
             sqlCommand.Parameters.Add(CreateVarcharParameter("@kategori", kategori));
@@ -527,7 +527,7 @@ namespace SqlLibrary
             Param.Direction = ParameterDirection.Input;
             Param.ParameterName = parameterName;
             Param.SqlDbType = SqlDbType.Int;
-            //Param.Value = value;
+            Param.Value = value;
             return Param;
         }
 

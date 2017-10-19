@@ -14,12 +14,48 @@
 }
 
 
-#Image1 {
+/*#Image1 {
     background: url('Bilder/10798171-Some-Office-Stuff-Hand-Drawn-Stock-Vector-doodle.jpg') no-repeat;
     background-attachment: fixed;
     background-size: 100%;
+}*/
+/*html {
+    background: url('Bilder/10798171-Some-Office-Stuff-Hand-Drawn-Stock-Vector-doodle.jpg') no-repeat;
+    background-attachment:initial;
+    background-size: 100%;
+}*/
+
+.container-fluid {
+    background-image: url('Bilder/10798171-Some-Office-Stuff-Hand-Drawn-Stock-Vector-doodle.jpg');
+    background-position: inherit;
+    /*width: 700px;
+    height: 400px;*/
 }
-.row {
-    float: left;
-    margin-left:100px;
+.gem {
+    background-image: url('Bilder/10798171-Some-Office-Stuff-Hand-Drawn-Stock-Vector-doodle.jpg');
+    background-position:inherit;
+    /*width: 700px;
+    height: 400px;*/
 }
+/*.auto-style2 {
+    background-image: url('Bilder/10798171-Some-Office-Stuff-Hand-Drawn-Stock-Vector-doodle.jpg');
+    background-position: inherit;
+}*/
+.Häft {
+    background-image: url('Bilder/10798171-Some-Office-Stuff-Hand-Drawn-Stock-Vector-doodle.jpg');
+    background-position: inherit;
+}
+
+.papper{
+background-image: url('Bilder/10798171-Some-Office-Stuff-Hand-Drawn-Stock-Vector-doodle.jpg');
+    background-position: inherit;
+}
+#Content2 {
+    background-image: url('Bilder/10798171-Some-Office-Stuff-Hand-Drawn-Stock-Vector-doodle.jpg');
+    background-position: inherit;
+}
+#buyStuff {
+    float:right;
+    margin-right: 50px;
+}
+

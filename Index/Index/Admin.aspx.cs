@@ -13,5 +13,16 @@ namespace Index
 		{
 
 		}
+
+		protected void Button1_Click(object sender, EventArgs e)
+		{
+			
+
+		}
+		//protected void addButton_Click(object sender, EventArgs e)
+		//{
+		//	int amount = int.Parse(amountTextBox.Text);
+		//	Master.buttonBuyThings_Click(sender, e, amount);
+		//}
 	}
 }
