@@ -65,6 +65,7 @@
 
         <asp:Label ID="buyLoggedInLabel" runat="server" ForeColor="Red"></asp:Label>
        </div>
+       <div class="bild"> <img src="Bilder/10798171-Some-Office-Stuff-Hand-Drawn-Stock-Vector-doodle.jpg" />
 	</div>
   
 </asp:Content>
