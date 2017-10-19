@@ -255,7 +255,42 @@ namespace SqlLibrary
         {
             List<Artiklar> artiklar = new List<Artiklar>();
             SqlCommand sqlCommandArt = new SqlCommand(); //Skapa alltid i varje ny metod
-            sqlCommandArt.CommandText = "select * from Artiklar";
+            sqlCommandArt.CommandText = $"select * from Artiklar ";
+            sqlCommandArt.CommandType = CommandType.Text; //Sparat i Managment studio
+            sqlCommandArt.Connection = sqlConnection;
+
+            try
+            {
+                sqlConnection.Open();
+                SqlDataReader reader = sqlCommandArt.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    Artiklar artikel = new Artiklar();
+                    artikel.AID = int.Parse(reader["ArtikelID"].ToString());
+                    artikel.artikelnamn = (string)reader["artikelnamn"];
+                    artikel.pris = (int)reader["pris"];
+                    artikel.kategori = (string)reader["kategori"];
+
+                    artiklar.Add(artikel);
+                }
+
+            }
+            catch
+            {
+                artiklar = null;
+            }
+            finally
+            {
+                sqlConnection.Close();
+            }
+            return artiklar;
+        }
+        public List<Artiklar> ReadAllArtiklar(string kategori)
+        {
+            List<Artiklar> artiklar = new List<Artiklar>();
+            SqlCommand sqlCommandArt = new SqlCommand(); //Skapa alltid i varje ny metod
+            sqlCommandArt.CommandText = $"select * from Artiklar where [Kategori]='{kategori}'";
             sqlCommandArt.CommandType = CommandType.Text; //Sparat i Managment studio
             sqlCommandArt.Connection = sqlConnection;
 

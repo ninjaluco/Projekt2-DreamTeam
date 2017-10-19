@@ -8,14 +8,15 @@
 			height: 216px;
 		}
 	
-		.bild {
+		/*.bild {
     background-image: url('Bilder/10798171-Some-Office-Stuff-Hand-Drawn-Stock-Vector-doodle.jpg');
     
-}
+}*/
 	</style>
+    <script src="Js/JSHaftapperater.js"></script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-	<div class="bild">
+<%--	<div class="bild">
 
     <p>Häftapparater</p>
 	<img src="Bilder/5000272_301_220.jpg" class="productImage" />
@@ -23,8 +24,12 @@
         <asp:TextBox ID="amountTextBox" type="number" min="1" runat="server" Width="32px">1</asp:TextBox>
     </p>&nbsp;
 
-		</div>
-	<div class="bild"> <img src="Bilder/10798171-Some-Office-Stuff-Hand-Drawn-Stock-Vector-doodle.jpg" />
+		</div>--%>
+     <div class="container-fluid">
+        <div class="row"></div>
+    </div>
+
+	<%--<div class="bild"> <img src="Bilder/10798171-Some-Office-Stuff-Hand-Drawn-Stock-Vector-doodle.jpg" />--%>
 </div>
 		
     </asp:Content>
