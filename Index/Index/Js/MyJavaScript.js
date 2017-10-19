@@ -61,7 +61,49 @@
 
        
 
-	});
+    });
+    $(".deleteButton").click(function () {
+
+        var row = this.parentNode.parentNode;
+        var aid = this.parentNode.parentNode.cells[0].textContent;
+
+        alert(aid);
+
+        var cookieValue = $.cookie("shoppingCart");
+        var newCookie = cookieValue.split(',');
+
+        var aidCounter = 0;
+        for (var i = 0; i < newCookie.length; i++) {
+            if (newCookie[i] === aid) {
+                aidCounter++;
+            }
+        }
+
+        while (aidCounter != 0) {
+
+
+            if (newCookie[0] == aid) {
+                cookieValue = cookieValue.replace(aid.toString() + ",", ",");
+                newCookie[0] = "";
+                aidCounter--;
+            }
+            else {
+                cookieValue = cookieValue.replace("," + aid.toString() + ",", ",");
+                aidCounter--;
+            }
+
+
+
+
+        }
+        $.removeCookie("shoppingCart");
+
+        $.cookie("shoppingCart", cookieValue, { expires: 2 });
+
+
+    });
+
+
 	function LoadAllPennor() {
 		$.getJSON("/Service/Service.aspx?all=1").
 			done(function (artiklar) {

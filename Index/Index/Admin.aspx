@@ -1,4 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Main.Master" AutoEventWireup="true" CodeBehind="Admin.aspx.cs" Inherits="Index.Admin" %>
+<%@ MasterType VirtualPath="~/Main.Master" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 	<meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -46,7 +47,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>                        
       </button>
-      <%--<a class="navbar-brand" href="#">Logo</a>--%>
+
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">
@@ -72,17 +73,17 @@
 
         <div class="panel-body"><img src='Bilder/Pennor.jpg' class="img-responsive" style="width:100%" alt="Image"></div>
         <div class="panel-footer">99,99:-
-			<asp:Button ID="addButton" runat="server" Text="Lägg till" CommandArgument="3," />
+			<asp:Button ID="addButton" runat="server" onclick="addButton_Click" Text="Lägg till" CommandArgument="3," />
         <asp:TextBox ID="amountTextBox" type="number" min="1" runat="server" Width="32px">1</asp:TextBox>
         </div>
       </div>
     </div>
     <div class="col-sm-4"> 
       <div class="panel panel-danger">
-        <div class="panel-heading">Häftapparater</div>
+        <div class="panel-heading">Häftapparat</div>
         <div class="panel-body"><img src='Bilder/5000272_301_220.jpg' class="img-responsive" style="width:92%" alt="Image"></div>
         <div class="panel-footer">99,99:-
-			<asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="Lägg till" CommandArgument="3," />
+			<asp:Button ID="Button1" runat="server" onclick="Button1_Click" Text="Lägg till" CommandArgument="3," />
         <asp:TextBox ID="TextBox1" type="number" min="1" runat="server" Width="32px">1</asp:TextBox>
         </div>
       </div>
@@ -92,7 +93,7 @@
         <div class="panel-heading">Papper</div>
         <div class="panel-body"><img src='Bilder/pappernfokus.jpg' class="img-responsive1" style="width: 100%" alt="Image"></div>
         <div class="panel-footer">99,99:-
-			<asp:Button ID="Button2" runat="server" Text="Lägg till" CommandArgument="3," />
+			<asp:Button ID="Button2" runat="server" onclick="Button2_Click" Text="Lägg till" CommandArgument="3," />
         <asp:TextBox ID="TextBox2" type="number" min="1" runat="server" Width="32px">1</asp:TextBox>
         </div>
       </div>
@@ -107,25 +108,12 @@
         <div class="panel-heading">Gem</div>
         <div class="panel-body"><img src="Bilder/thumb.jpg" class="img-responsive" style="width: 100%" alt="Image"></div>
         <div class="panel-footer">99,99:-
-			<asp:Button ID="Button3" runat="server" Text="Lägg till" CommandArgument="3," />
+			<asp:Button ID="Button3" runat="server" onclick="Button3_Click" Text="Lägg till" CommandArgument="3," />
         <asp:TextBox ID="TextBox3" type="number" min="1" runat="server" Width="32px">1</asp:TextBox>
         </div>
       </div>
     </div>
- <%--   <div class="col-sm-4"> 
-      <div class="panel panel-primary">
-        <div class="panel-heading">BLACK FRIDAY DEAL</div>
-        <div class="panel-body"><img src="https://placehold.it/150x80?text=IMAGE" class="img-responsive" style="width:100%" alt="Image"></div>
-        <div class="panel-footer">Buy 50 mobiles and get a gift card</div>
-      </div>
-    </div>--%>
-<%--    <div class="col-sm-4"> 
-      <div class="panel panel-primary">
-        <div class="panel-heading">BLACK FRIDAY DEAL</div>
-        <div class="panel-body"><img src="https://placehold.it/150x80?text=IMAGE" class="img-responsive" style="width:100%" alt="Image"></div>
-        <div class="panel-footer">Buy 50 mobiles and get a gift card</div>
-      </div>
-    </div>--%>
+
   </div>
 </div><br><br>
 
