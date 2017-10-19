@@ -79,6 +79,7 @@ namespace Index
 
                                     TextBox numberBox = new TextBox();
                                     numberBox.Attributes.Add("type", "number");
+
                                     numberBox.Attributes.Add("min", "1");
                                     numberBox.Attributes.Add("runat", "server");
                                     numberBox.Attributes.Add("class", "numberBoxes");
@@ -94,7 +95,7 @@ namespace Index
                                     newCell1.Text = artikelInfo.AID.ToString();
                                     newCell2.Text = artikelInfo.artikelnamn;
                                     newCell3.Controls.Add(numberBox);
-                                    newCell3.Controls.Add(deleteButton);
+
                                     //newCell3.Text = $"<asp:TextBox ID=\"numberTextBox{}\" type=\"number\" min=\"1\" runat=\"server\">1</asp:TextBox>";
                                     newCell4.Text = $"{artikelInfo.pris.ToString()}";
                                     newCell5.Text = $"{artikelInfo.pris.ToString()}";
