@@ -59,6 +59,9 @@
         <asp:Button ID="buttonBuy" runat="server" OnClick="buttonBuy_Click" Text="Skicka Order" />
 
 
+        <asp:Label ID="buyLoggedInLabel" runat="server" ForeColor="Red"></asp:Label>
+
+
     </div>
 
 </asp:Content>

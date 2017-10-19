@@ -533,7 +533,7 @@ namespace SqlLibrary
             Param.Direction = ParameterDirection.Input;
             Param.ParameterName = parameterName;
             Param.SqlDbType = SqlDbType.Int;
-            //Param.Value = value;
+            Param.Value = value;
             return Param;
         }
 
