@@ -77,6 +77,10 @@
     <Content Include="Bilder\thumb.jpg" />
     <Content Include="Gem.aspx" />
     <Content Include="Häftapparater.aspx" />
+    <Content Include="Js\JSGem.js" />
+    <Content Include="Js\JSHaftapperater.js" />
+    <Content Include="Js\JSPapper.js" />
+    <Content Include="Js\JSPennor.js" />
     <Content Include="Js\MyJavaScript.js" />
     <Content Include="LogOn.aspx" />
     <Content Include="Main.Master" />

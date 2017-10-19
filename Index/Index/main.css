@@ -13,7 +13,15 @@
     margin-top: 7px;
 }
 
-
+html {
+	background-color: darkorange;
+}	
+.col-md-3 {
+	background-color: darkorange;
+}
+buy {
+	background-color: darkorange;
+}
 /*#Image1 {
     background: url('Bilder/10798171-Some-Office-Stuff-Hand-Drawn-Stock-Vector-doodle.jpg') no-repeat;
     background-attachment: fixed;
@@ -24,38 +32,41 @@
     background-attachment:initial;
     background-size: 100%;
 }*/
-
 .container-fluid {
-    background-image: url('Bilder/10798171-Some-Office-Stuff-Hand-Drawn-Stock-Vector-doodle.jpg');
-    background-position: inherit;
-    /*width: 700px;
+	/*background-image: url('Bilder/10798171-Some-Office-Stuff-Hand-Drawn-Stock-Vector-doodle.jpg');*/
+	background-position: inherit;
+	/*width: 700px;
     height: 400px;*/
 }
 .gem {
-    background-image: url('Bilder/10798171-Some-Office-Stuff-Hand-Drawn-Stock-Vector-doodle.jpg');
+    /*background-image: url('Bilder/10798171-Some-Office-Stuff-Hand-Drawn-Stock-Vector-doodle.jpg');*/
     background-position:inherit;
     /*width: 700px;
     height: 400px;*/
+	
 }
 /*.auto-style2 {
     background-image: url('Bilder/10798171-Some-Office-Stuff-Hand-Drawn-Stock-Vector-doodle.jpg');
     background-position: inherit;
 }*/
 .Häft {
-    background-image: url('Bilder/10798171-Some-Office-Stuff-Hand-Drawn-Stock-Vector-doodle.jpg');
+    /*background-image: url('Bilder/10798171-Some-Office-Stuff-Hand-Drawn-Stock-Vector-doodle.jpg');*/
     background-position: inherit;
 }
 
 .papper{
-background-image: url('Bilder/10798171-Some-Office-Stuff-Hand-Drawn-Stock-Vector-doodle.jpg');
+/*background-image: url('Bilder/10798171-Some-Office-Stuff-Hand-Drawn-Stock-Vector-doodle.jpg');*/
     background-position: inherit;
 }
 #Content2 {
-    background-image: url('Bilder/10798171-Some-Office-Stuff-Hand-Drawn-Stock-Vector-doodle.jpg');
+    /*background-image: url('Bilder/10798171-Some-Office-Stuff-Hand-Drawn-Stock-Vector-doodle.jpg');*/
     background-position: inherit;
 }
 #buyStuff {
     float:right;
     margin-right: 50px;
+}
+h4 {
+	color:black;
 }
 

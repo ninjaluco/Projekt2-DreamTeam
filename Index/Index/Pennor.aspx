@@ -8,11 +8,14 @@
 			height: 216px;
 		}
 	
-		.bild {
+		/*.bild {
     background-image: url('Bilder/10798171-Some-Office-Stuff-Hand-Drawn-Stock-Vector-doodle.jpg');
     
-}
+}*/
 	</style>
+	        
+
+	<script src="Js/JSPennor.js"></script>
 </asp:Content>
 <asp:Content ID="Pennor" ContentPlaceHolderID="MainContent" runat="server">
     <%--  <p>Pennor</p>--%>
@@ -28,6 +31,6 @@
     <div class="container-fluid">
         <div class="row"></div>
     </div>
-	<div class="bild"> <img src="Bilder/10798171-Some-Office-Stuff-Hand-Drawn-Stock-Vector-doodle.jpg" />
-</div>
+	<%--<div class="bild"> <img src="Bilder/10798171-Some-Office-Stuff-Hand-Drawn-Stock-Vector-doodle.jpg" />
+</div>--%>
 </asp:Content>

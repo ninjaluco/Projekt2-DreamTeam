@@ -14,12 +14,35 @@ namespace Index
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Request["all"] != null)
-            {
                 KlassBibliotek sqlStuff = new KlassBibliotek();
-
-                jsonLiteral.Text = JsonConvert.SerializeObject(sqlStuff.ReadAllArtiklar(), Formatting.Indented);
+           string kategori = "";
+            if (Request["pennor"] != null)
+            {
+                 kategori = "Pennor";
+                jsonLiteral.Text = JsonConvert.SerializeObject(sqlStuff.ReadAllArtiklar(kategori), Formatting.Indented);
             }
+            if (Request["papper"] != null)
+            {
+                kategori = "Papper";
+
+                jsonLiteral.Text = JsonConvert.SerializeObject(sqlStuff.ReadAllArtiklar(kategori), Formatting.Indented);
+            }
+            if (Request["haftapparater"] != null)
+            {
+                kategori = "häftapparater";
+
+                jsonLiteral.Text = JsonConvert.SerializeObject(sqlStuff.ReadAllArtiklar(kategori), Formatting.Indented);
+            }
+            if (Request["gem"] != null)
+            {
+                kategori = "Gem";
+
+                jsonLiteral.Text = JsonConvert.SerializeObject(sqlStuff.ReadAllArtiklar(kategori), Formatting.Indented);
+            }
+
+
+            //KlassBibliotek sqlStuff = new KlassBibliotek();
+            //    jsonLiteral.Text = JsonConvert.SerializeObject(sqlStuff.ReadAllArtiklar(kategori), Formatting.Indented);
         }
     }
 }
