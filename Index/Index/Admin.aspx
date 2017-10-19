@@ -101,11 +101,11 @@
   </div>
 </div><br>
 
-<div class="container">    
+<div class="container" >    
   <div class="rows">
-    <div class="col-sm-4">
-      <div class="panel panel-primary">
-        <div class="panel-heading">Gem</div>
+    <div class="col-sm-4" >
+      <div class="panel panel-primary" >
+        <div class="panel-heading" >Gem</div>
         <div class="panel-body"><img src="Bilder/thumb.jpg" class="img-responsive" style="width: 100%" alt="Image"></div>
         <div class="panel-footer">99,99:-
 			<asp:Button ID="Button3" runat="server" onclick="Button3_Click" Text="Lägg till" CommandArgument="3," />
