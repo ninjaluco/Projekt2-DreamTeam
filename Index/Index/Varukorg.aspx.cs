@@ -19,16 +19,27 @@ namespace Index
         private void LoadShoppingCart()
         {
             //Laddar cookien och plockar ut artikelid för artiklarna i varukorgen. Genererar HTML-tabell.
+
+
             if (Request.Cookies["shoppingCart"] != null)
             {
-                string[] data = Request.Cookies["shoppingCart"].Value.Split(',');
+                string cookieData = Request.Cookies["shoppingCart"].Value;
+
+                cookieData = cookieData.Replace("%2C", ",");
+
+                string[] data = cookieData.Split(',');
                 KlassBibliotek sqlBibliotek = new KlassBibliotek();
                 List<Artiklar> artikelList = sqlBibliotek.ReadAllArtiklar();
+                
+                
+
 
                 foreach (var artikel in data)
                 {
                     if (artikel != "")
                     {
+
+
                         bool exists = false;
                         Artiklar artikelInfo = artikelList.FirstOrDefault(x => x.AID == int.Parse(artikel));
                         if (artikelInfo != null)
@@ -97,7 +108,7 @@ namespace Index
                         superSum += int.Parse(shoppingCartTable.Rows[i].Cells[4].Text);
                     }
                 }
-                sumOfAll.Text = $"Totalsumma: {superSum.ToString()} kr";
+                sumOfAll.Text = $"{superSum.ToString()}";
 
 
             }
