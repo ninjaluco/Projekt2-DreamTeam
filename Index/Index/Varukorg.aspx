@@ -43,7 +43,7 @@
 			   <asp:TableHeaderCell>
  
 				   </asp:TableHeaderCell>
-			   <asp:TableHeaderCell ID="sumOfAll">
+			   <asp:TableHeaderCell ID="sumOfAll" CssClass="sumOfAll">
 				Totalsumma:
 			   </asp:TableHeaderCell>
 		   </asp:TableHeaderRow>
