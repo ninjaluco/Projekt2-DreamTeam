@@ -72,7 +72,7 @@
 
 					var tableRow =
                         "<div></div><div class=\"col-md-3\"> <h4>" + artiklar[i].artikelnamn + "</h4><p " + artiklar[i].pris + "</p><p>&nbsp</p><p>" +
-                        "<input type=\"button\" id=\"" + artiklar[i].artikelnamn + "\" value=\"Köp\" /></p></div>";
+                        "<input type=\"button\" id=\"" + artiklar[i].AID + "\" value=\"Köp\" /></p></div>";
 					
 					
                     $(".row").append(tableRow);
