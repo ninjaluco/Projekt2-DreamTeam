@@ -12,10 +12,9 @@ namespace Index
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!IsPostBack)
-            {
+           
                 LoadShoppingCart();
-            }
+            
             
 
         }
@@ -85,12 +84,17 @@ namespace Index
                                     numberBox.Attributes.Add("class", "numberBoxes");
                                     numberBox.Text = "1";
                                     numberBox.Attributes.Add("OnTextChanged", "ChangeNumberText");
+                                    Button deleteButton = new Button();
+                                    deleteButton.Text = "Ta bort Samtliga";
+                                    deleteButton.Attributes.Add("class", "deleteButton");
+
                                     //numberBox.Attributes.Add("autopostback", "true");
                                     numberBox.Attributes.Add("ID", $"numberBox{shoppingCartTable.Rows.Count - 1}");
 
                                     newCell1.Text = artikelInfo.AID.ToString();
                                     newCell2.Text = artikelInfo.artikelnamn;
                                     newCell3.Controls.Add(numberBox);
+                                    newCell3.Controls.Add(deleteButton);
                                     //newCell3.Text = $"<asp:TextBox ID=\"numberTextBox{}\" type=\"number\" min=\"1\" runat=\"server\">1</asp:TextBox>";
                                     newCell4.Text = $"{artikelInfo.pris.ToString()}";
                                     newCell5.Text = $"{artikelInfo.pris.ToString()}";
