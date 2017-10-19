@@ -6,10 +6,11 @@
 		.auto-style2 {
 			height: 216px;
 		}
-		body{
-			background-color:white;
-			background-image:none;
-		}
+	
+		.bild {
+    background-image: url('Bilder/10798171-Some-Office-Stuff-Hand-Drawn-Stock-Vector-doodle.jpg');
+    
+}
 	</style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
@@ -62,7 +63,9 @@
 
         <asp:Button ID="buttonBuy" runat="server" OnClick="buttonBuy_Click" Text="Skicka Order" />
 
-
+		 
     </div>
-
+	<div class="bild"> <img src="Bilder/10798171-Some-Office-Stuff-Hand-Drawn-Stock-Vector-doodle.jpg" />
+</div>
 </asp:Content>
+

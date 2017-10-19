@@ -19,7 +19,7 @@
     background-attachment: fixed;
     background-size: 100%;
 }*/
-html {
+index_1,gem,häftapparater,papper,pennor,Varukorg {
     background: url('Bilder/10798171-Some-Office-Stuff-Hand-Drawn-Stock-Vector-doodle.jpg') no-repeat;
     background-attachment:initial;
     background-size: 100%;
@@ -31,17 +31,17 @@ html {
     /*width: 700px;
     height: 400px;*/
 }
-.gem {
+/*.gem {
     background-image: url('Bilder/10798171-Some-Office-Stuff-Hand-Drawn-Stock-Vector-doodle.jpg');
     background-position:inherit;
-    /*width: 700px;
-    height: 400px;*/
-}
+    width: 700px;
+    height: 400px;
+}*/
 /*.auto-style2 {
     background-image: url('Bilder/10798171-Some-Office-Stuff-Hand-Drawn-Stock-Vector-doodle.jpg');
     background-position: inherit;
 }*/
-.Häft {
+/*.Häft {
     background-image: url('Bilder/10798171-Some-Office-Stuff-Hand-Drawn-Stock-Vector-doodle.jpg');
     background-position: inherit;
 }
@@ -49,9 +49,11 @@ html {
 .papper{
 background-image: url('Bilder/10798171-Some-Office-Stuff-Hand-Drawn-Stock-Vector-doodle.jpg');
     background-position: inherit;
-}
+}*/
 #Content2 {
     background-image: url('Bilder/10798171-Some-Office-Stuff-Hand-Drawn-Stock-Vector-doodle.jpg');
     background-position: inherit;
 }
+
+
 
