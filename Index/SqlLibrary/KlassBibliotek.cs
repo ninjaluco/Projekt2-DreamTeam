@@ -273,7 +273,7 @@ namespace SqlLibrary
                 while (reader.Read())
                 {
                     Artiklar artikel = new Artiklar();
-                    artikel.AID = (int)reader["ArtikelId"];
+                    artikel.AID = int.Parse(reader["ArtikelID"].ToString());
                     artikel.artikelnamn = (string)reader["artikelnamn"];
                     artikel.pris = (int)reader["pris"];
                     artikel.kategori = (string)reader["kategori"];
@@ -303,7 +303,7 @@ namespace SqlLibrary
             sqlCommand.Connection = sqlConnection;
 
 
-            sqlCommand.Parameters.Add(CreateIntParam("@AID", AID));
+            sqlCommand.Parameters.Add(CreateIntParam("@AID",AID ));
             sqlCommand.Parameters.Add(CreateVarcharParameter("@artikelNamn", artikelnamn));
             sqlCommand.Parameters.Add(CreateIntParam("@pris", pris));
             sqlCommand.Parameters.Add(CreateVarcharParameter("@kategori", kategori));
@@ -372,7 +372,7 @@ namespace SqlLibrary
         //=========================================================================================
         //==========ORDER AVLÄSNING================================================================
 
-        public bool OrderRegistrering(int OID, int KID)
+        public int OrderRegistrering(int KID)
         {
             SqlCommand sqlCommand = new SqlCommand(); //Skapa alltid i varje ny metod
             sqlCommand.CommandText = "RegisterOrder";
@@ -380,9 +380,14 @@ namespace SqlLibrary
             sqlCommand.Connection = sqlConnection;
 
 
-            sqlCommand.Parameters.Add(CreateIntParam("@OID", OID));
             sqlCommand.Parameters.Add(CreateIntParam("@KID", KID));
-            
+
+            SqlParameter paramOID = new SqlParameter("@OID", SqlDbType.Int);
+            paramOID.Direction = ParameterDirection.Output;
+            sqlCommand.Parameters.Add(paramOID);
+
+
+            int oidOutput = 0;
 
 
             int rowEffected;
@@ -391,6 +396,7 @@ namespace SqlLibrary
             {
                 sqlConnection.Open();
                 rowEffected = sqlCommand.ExecuteNonQuery();
+                oidOutput = int.Parse(paramOID.Value.ToString());
 
             }
             catch
@@ -402,7 +408,7 @@ namespace SqlLibrary
             {
                 sqlConnection.Close();
             }
-            return rowEffected > 0; //true or false is returning
+            return oidOutput; //true or false is returning
 
 
         }

@@ -71,8 +71,8 @@
                 for (var i = 0; i < artiklar.length; i++) {
 
 					var tableRow =
-						"<div></div><div class=\"col-md - 3\"> <h4>" + artiklar[i].artikelnamn + "</h4><p " + artiklar[i].pris + "</p><p>&nbsp</p><p>" +
-						"<input type=\"button\" value=\"Köp\" /></p></div>";
+                        "<div></div><div class=\"col-md-3\"> <h4>" + artiklar[i].artikelnamn + "</h4><p " + artiklar[i].pris + "</p><p>&nbsp</p><p>" +
+                        "<input type=\"button\" id=\"" + artiklar[i].AID + "\" value=\"Köp\" /></p></div>";
 					
 					
                     $(".row").append(tableRow);

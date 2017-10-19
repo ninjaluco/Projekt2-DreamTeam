@@ -1,6 +1,8 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Main.Master" AutoEventWireup="true" CodeBehind="Varukorg.aspx.cs" Inherits="Index.Varukorg" %>
+<%@ MasterType VirtualPath="~/Main.Master" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-	<style type="text/css">
+    <style type="text/css">
 		.auto-style2 {
 			height: 216px;
 		}
@@ -55,5 +57,12 @@
 	   
 
 	</div>
+    <div>
+
+
+        <asp:Button ID="buttonBuy" runat="server" OnClick="buttonBuy_Click" Text="Skicka Order" />
+
+
+    </div>
 
 </asp:Content>
