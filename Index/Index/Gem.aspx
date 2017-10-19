@@ -2,7 +2,7 @@
 <%@ MasterType VirtualPath="~/Main.Master" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-	<style type="text/css">
+    <style type="text/css">
 		.auto-style2 {
 			height: 216px;
 		}
