@@ -39,6 +39,7 @@ namespace Index
 		{
 			bool invalidNick = true;
 			bool invalidPass = true;
+            int KID = 0;
 			string user = textBoxUser.Text;
 			string password = textBoxLösen.Text;
 			SqlConnection sqlConnection = new SqlConnection(KlassBibliotek.connString);
@@ -62,6 +63,7 @@ namespace Index
 						invalidNick = false;
 						while (sqlDataReader2.Read())
 						{
+                            KID= int.Parse(sqlDataReader2["KundID"].ToString());
 							string pass = sqlDataReader2["Password"].ToString();
 							if (password == pass)
 							{
@@ -72,7 +74,8 @@ namespace Index
 								else
 									Response.Redirect("/UserProfile.aspx");
 							}
-						}
+                           
+                        }
 						sqlConnection2.Close();
 						if (invalidPass)
 							Response.Redirect("/Index_1.aspx");
@@ -94,12 +97,12 @@ namespace Index
 
 			if (invalidNick)
 				Response.Redirect("/RegisterUser.aspx");
+            
+        }
 
-		}
-
-		protected void Registrera(object sender, EventArgs e)
+        protected void Registrera(object sender, EventArgs e)
 		{
-
-		}
+            Response.Redirect("/RegisterUser.aspx");
+        }
 	}
 }
