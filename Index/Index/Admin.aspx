@@ -82,7 +82,7 @@
         <div class="panel-heading">Häftapparater</div>
         <div class="panel-body"><img src='Bilder/5000272_301_220.jpg' class="img-responsive" style="width:92%" alt="Image"></div>
         <div class="panel-footer">99,99:-
-			<asp:Button ID="Button1" runat="server" Text="Lägg till" CommandArgument="3," />
+			<asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="Lägg till" CommandArgument="3," />
         <asp:TextBox ID="TextBox1" type="number" min="1" runat="server" Width="32px">1</asp:TextBox>
         </div>
       </div>
