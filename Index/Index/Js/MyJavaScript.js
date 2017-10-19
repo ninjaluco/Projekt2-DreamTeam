@@ -3,20 +3,63 @@
 
 	$(".numberBoxes").change(function () {
 
-		var numberBox = this;
-		var aid = this.parentNode.parentNode.cells[0].textContent;
+        var numberBox = this;
+        var aid = this.parentNode.parentNode.cells[0].textContent;
+        //problem med att hitta id på tabellen. löser det så här istället.
+        var tBody = this.parentNode.parentNode.parentNode;
+        var row = this.parentNode.parentNode;
+        var cookieValue = $.cookie("shoppingCart");
+        var totalsum = 0;
+        var totalSumOfAll = 0;
+        var price = parseInt(row.cells[3].innerText);
+        
+        totalsum = price * parseInt(this.value);
+        row.cells[4].innerText = totalsum.toString();
 
-		var cookieValue = $.cookie("shoppingCart");
+        for (var i = 1; i < tBody.children.length - 1; i++) {
 
-		for (var i = 1; i < $("#MainContent_shoppingCartTable").children.length; i++) {
+            totalSumOfAll += parseInt(tBody.children[i].cells[4].innerText);
 
-			if (i != 2) {
-				this.parentNode.parentNode.cells[i].textContent = "bajs";
+        }
 
-			}
 
-		}
+        tBody.lastElementChild.cells[4].innerText = totalSumOfAll.toString();
+       
+        var newCookie = cookieValue.split(',');
+        var aidCounter = 0;
 
+        for (var i = 0; i < newCookie.length; i++) {
+            if (newCookie[i] === aid) {
+                aidCounter++;
+            }
+        }
+
+        while (aidCounter != parseInt(this.value)) {
+            if (parseInt(this.value) < aidCounter) {
+
+                if (newCookie[0] == aid) {
+                    cookieValue = cookieValue.replace(aid.toString() + ",", ",");
+                    newCookie[0] = "";
+                    aidCounter--;
+                }
+                else {
+                    cookieValue = cookieValue.replace("," + aid.toString() + ",", ",");
+                    aidCounter--;
+                }
+                
+
+            }
+            else if (parseInt(this.value) > aidCounter) {
+                cookieValue += (aid + ",");
+                aidCounter++
+            }
+        }
+        $.removeCookie("shoppingCart");
+
+        $.cookie("shoppingCart", cookieValue, { expires: 2 });
+
+
+       
 
 	});
 	function LoadAllPennor() {
@@ -28,8 +71,8 @@
                 for (var i = 0; i < artiklar.length; i++) {
 
 					var tableRow =
-						"<div></div><div class=\"col-md - 3\"> <h4>" + artiklar[i].artikelnamn + "</h4><p " + artiklar[i].pris + "</p><p>&nbsp</p><p>" +
-						"<input type=\"button\" value=\"Köp\" /></p></div>";
+                        "<div></div><div class=\"col-md-3\"> <h4>" + artiklar[i].artikelnamn + "</h4><p " + artiklar[i].pris + "</p><p>&nbsp</p><p>" +
+                        "<input type=\"button\" id=\"" + artiklar[i].aid + "\" value=\"Köp\" /></p></div>";
 					
 					
                     $(".row").append(tableRow);
