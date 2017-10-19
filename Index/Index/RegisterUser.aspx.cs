@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using SqlLibrary;
 
 namespace Index
 {
@@ -16,6 +17,8 @@ namespace Index
        
 protected void ButtonReg_Click(object sender, EventArgs e)
         {
+             KlassBibliotek klassBibliotek = new KlassBibliotek();
+
             string nick = NickName.Text;
             string pass = Password.Text;
             string name = Name.Text;
@@ -25,8 +28,13 @@ protected void ButtonReg_Click(object sender, EventArgs e)
             string ssn = SSN.Text;
             string phone = Telefon.Text;
             string mail = Epost.Text;
-          
-        
+            bool reg = klassBibliotek.KundRegistrering(name, nick, pass, phone, mail, street, city, zip, ssn);
+            if (reg)
+            {
+                Response.Redirect("/Index_1.aspx");
+            }
+            
+
         }
     }
 }

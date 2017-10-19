@@ -72,7 +72,7 @@
 
 					var tableRow =
                         "<div></div><div class=\"col-md-3\"> <h4>" + artiklar[i].artikelnamn + "</h4><p " + artiklar[i].pris + "</p><p>&nbsp</p><p>" +
-                        "<input type=\"button\" class=\"köp\" id=\"" + artiklar[i].AID + "\" value=\"Köp\" /></p></div>";
+                        "<input type=\"button\" class=\"buy\" id=\"" + artiklar[i].AID + "\" value=\"Köp\" /></p></div>";
 					
 					
                     $(".row").append(tableRow);
@@ -82,7 +82,28 @@
 			});
 	
 			
-	}
+    }
+
+    $(".row").on("click", ".buy", function () {
+
+        var artikelId = this.id;
+
+        var cookieValue = $.cookie("shoppingCart");
+
+        if (!(cookieValue == null)) {
+
+            cookieValue += (artikelId + ",");
+
+        }
+        else {
+            cookieValue = (artikelId + ",");
+        }
+
+        $.removeCookie("shoppingCart");
+
+        $.cookie("shoppingCart", cookieValue, { expires: 2 });
+
+    });
 
 
 
