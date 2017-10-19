@@ -158,7 +158,16 @@ namespace Index
 
             LoadShoppingCart();
         }
-        
-    
+
+        protected void buttonBuy_Click(object sender, EventArgs e)
+        {
+
+            int orderID = 1;
+
+
+            string varukorg = Request.Cookies["shoppingCart"].Value;
+
+
+        }
     }
 }
